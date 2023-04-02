@@ -13,8 +13,8 @@
 // along with this program.  If not, see http://www.gnu.org/licenses/.
 // 
 
-#ifndef __NESTING_VETHERTRAFGEN_H
-#define __NESTING_VETHERTRAFGEN_H
+#ifndef __NESTING_VETHERTRAFGENGCL_H
+#define __NESTING_VETHERTRAFGENGCL_H
 
 #include <omnetpp.h>
 
@@ -45,8 +45,8 @@ private:
     cPar* result_file_location;
 
     // 调度表存储GCL信息
-    Schedule<GateBitvector>* currentSchedule;
-    Schedule<GateBitvector>* nextSchedule;
+    // 获取gateController中的newSchedule对象
+    Schedule<GateBitvector>* newSchedule;
     
     // 结果文件
     fstream result_file;
@@ -54,7 +54,6 @@ private:
     GateController* gateController;
 
 protected:
-    virtual ~VlanEtherTrafGenGCL();
     virtual void initialize(int stage) override;
     virtual void sendBurstPackets() override;
     // 自写函数

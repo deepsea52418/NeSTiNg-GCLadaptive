@@ -61,9 +61,6 @@ private:
      */
     Schedule<GateBitvector>* nextSchedule;
 
-    // 创建一个newSchedule,保存当前调度方案，并用于更新GCL自适应
-    Schedule<GateBitvector>* newSchedule;
-
     // /** Index for the current entry in the schedule. */
     // unsigned int scheduleIndex;
 
@@ -117,6 +114,10 @@ public:
     /** Index for the current entry in the schedule. */
     unsigned int scheduleIndex;
 
+    // 创建一个newSchedule,保存当前调度方案，并用于更新GCL自适应
+    // 更新方式是vlanEtherTrafGenGCL读取newSchedule,进行自适应调节
+    Schedule<GateBitvector>* newSchedule;
+
     virtual ~GateController();
 
     /** @see IClockListener::tick(IClock*) */
@@ -137,10 +138,6 @@ public:
 
     // 获取当前GCL的Index
     virtual unsigned int getscheduleIndex();
-
-    // 设置下一时刻调度
-    virtual void setNextSchedule(Schedule<GateBitvector>* schedule);
-
 };
 
 } // namespace nesting

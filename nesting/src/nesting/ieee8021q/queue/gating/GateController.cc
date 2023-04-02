@@ -23,8 +23,12 @@ GateController::~GateController() {
     transmissionGates.clear();
     
     assert(currentSchedule != nullptr);
-    delete currentSchedule;
-
+    
+    // delete currentSchedule;
+    // 删除currrentSchedule
+    if (currentSchedule != nullptr) {
+        delete currentSchedule;
+    }
     if (nextSchedule != nullptr) {
         delete nextSchedule;
     }
@@ -32,7 +36,6 @@ GateController::~GateController() {
     if (newSchedule != nullptr) {
         delete newSchedule;
     }
-
     cancelEvent(&updateScheduleMsg);
 }
 
@@ -99,12 +102,7 @@ void GateController::initialize(int stage) {
         
 
         cXMLElement* xml = par("initialSchedule").xmlValue();
-        // 初始化newSchedule
-        newSchedule = new Schedule<GateBitvector>();
-
         loadScheduleOrDefault(xml);
-
-
         if (par("enableHoldAndRelease")) {
             //Schedule hold for the first entry if needed.
             //This is needed because hold is only always requested for the following entry,
@@ -180,7 +178,6 @@ unsigned int GateController::calculateMaxBit(int gateIndex) {
     bool touchedNextSchedule = false;
     int currentIndex = (scheduleIndex + currentSchedule->getControlListLength() - 1)
             % currentSchedule->getControlListLength();
-
     // sum up time gate is opened until now since last change
     simtime_t cumSumGateLength = SIMTIME_ZERO;
     simtime_t tmp = SIMTIME_ZERO;
@@ -188,7 +185,6 @@ unsigned int GateController::calculateMaxBit(int gateIndex) {
         // tmp necessary because =+ not defined for simtime_t
         tmp = cumSumGateLength + currentSchedule->getTimeInterval(i);
         cumSumGateLength = tmp;
-
     }
     GateBitvector bitvector = currentSchedule->getScheduledObject(currentIndex);
     while (bits < kEthernet2MaximumTransmissionUnitBitLength.get()) {
@@ -295,13 +291,11 @@ unsigned int GateController::calculateMaxBit(int gateIndex) {
     }
     //otherwise, return the full MTU bits
     return kEthernet2MaximumTransmissionUnitBitLength.get();
-
 }
 
 // 加载门控调度器的调度序列，并在序列为空时抛出异常。如果成功加载调度序列，则将其存储在变量nextSchedule中。
 void GateController::loadScheduleOrDefault(cXMLElement* xml) {
     Schedule<GateBitvector> *schedule = ScheduleFactory::createGateBitvectorSchedule(xml);
-
     if (schedule->getControlListLength() == 0) {
         throw cRuntimeError("Tried to load schedule with zero entries.");
     }
@@ -310,10 +304,9 @@ void GateController::loadScheduleOrDefault(cXMLElement* xml) {
                     << schedule->getCycleTime() << ". Entry count is "
                     << schedule->getControlListLength() << ". Time is "
                     << clock->getTime().inUnit(SIMTIME_US) << endl;
-
     nextSchedule = schedule;
-    newSchedule = schedule;
-    // 在这边，我们输出以下new和
+    // 在初始化的时候需要创建newSchedule，否则无法读取第一个GCL
+    newSchedule = ScheduleFactory::copySchedule(nextSchedule);
 }
 
 // 设置门状态
@@ -346,20 +339,13 @@ void GateController::updateSchedule()
 
         // Load new schedule and delete the old one if there is new schedule.
         // 可以通过改变nextSchedule变量, 调整数据.
-        
-        // 删除这行，因为涉及到经常修改当前调度表，所以不能直接删除
         // delete currentSchedule;
-        currentSchedule = nextSchedule;
-        nextSchedule = nullptr;
-        // newSchedule保存currentSchedule信息
-        //newSchedule = currentSchedule;
-
-        // // 在每次更新GCL之后，用newSchedule保存currentSchedule的基本信息，如时隙大小等
-        // simtime_t currentSchedule_cycle = currentSchedule->getCycleTime();
-        // simtime_t currentSchedule_TTinterval = currentSchedule->getTimeInterval(0);
-        // simtime_t currentSchedule_BEinterval = currentSchedule->getTimeInterval(1);
-
-
+        // currentSchedule = nextSchedule;
+        // nextSchedule = nullptr;
+        // 删除旧的空间
+        delete currentSchedule;
+        currentSchedule = ScheduleFactory::copySchedule(newSchedule);
+        nextSchedule = newSchedule;
         // 记录GCL更新情况
         this->result_file << "{ \"time\": "<<simTime() << ", \"cycletime\": \"" << currentSchedule->getCycleTime() << "\""\
             << ", \"TT-gcl\": \"" << currentSchedule->getScheduledObject(scheduleIndex)  << "\"" \
@@ -462,21 +448,14 @@ bool GateController::currentlyOnHold() {
 // 自写函数
 // 获取下一次加载的GCL信息
 Schedule<GateBitvector>* GateController::getnewSchedule(){
-    return this->currentSchedule;
-    //return this->newSchedule;
+    return this->newSchedule;
 }
 
 // 自写函数
-// 获取当前GCL的Index信息
-// 由于不更改GCL条目情况，只更改时隙大小，所以TT时隙对应Index相同
+// 获取当前GCL的Index信息，由于当前的Index是执行的下一条GCL的序号，需要-1
 unsigned int GateController::getscheduleIndex(){
-    return this->scheduleIndex-1 ;
+    return (this->scheduleIndex -1)% this->currentSchedule->getControlListLength();
 }
 
-// 自写函数
-// 设置下一时刻调度
-void GateController::setNextSchedule(Schedule<GateBitvector>* schedule){
-    this->nextSchedule = schedule;
-}
 }
 // namespace nesting

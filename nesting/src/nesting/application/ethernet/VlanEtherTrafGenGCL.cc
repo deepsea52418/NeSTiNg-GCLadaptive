@@ -32,24 +32,8 @@
 namespace nesting {
 
     Define_Module(VlanEtherTrafGenGCL);
-
-    // 由于代码中需要创建Schedule<GateBitvector>对象，需要写一个析构函数
-    VlanEtherTrafGenGCL::~VlanEtherTrafGenGCL(){
-        if (currentSchedule != nullptr) {
-            delete currentSchedule;
-        }
-        if (nextSchedule != nullptr) {
-            delete nextSchedule;
-        }
-    }
-
     void VlanEtherTrafGenGCL::initialize(int stage) {
         EtherTrafGen::initialize(stage);
-
-        // 创建Schedule<GateBitvector>对象，用于后续代码中生成新的GCL表
-        Schedule<GateBitvector>* currentSchedule = new Schedule<GateBitvector>();
-        Schedule<GateBitvector>* nextSchedule = new Schedule<GateBitvector>();
-
         if (stage == INITSTAGE_LOCAL) {
             vlanTagEnabled = &par("vlanTagEnabled");
             pcp = &par("pcp");
@@ -137,17 +121,15 @@ namespace nesting {
             << ", \"e2edelay\": " << delay << " } "   << endl;
         // 判断当前报文是否是TT流，若不是TT流，则不进行调节
         if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 ){
-            // 获取下一个更新的GCL情况（不能获取当前的，更新GCL是更新下一次的GCL）           
-            // 主要问题出在了这一行
-            currentSchedule = gateController->getnewSchedule();
-            nextSchedule = currentSchedule;
-            simtime_t schedule_cycle = currentSchedule->getCycleTime();
+            // 获取gatecontroller中的newSchedule对象
+            newSchedule = gateController ->getnewSchedule();
+            simtime_t schedule_cycle = newSchedule->getCycleTime();
             // 获取当前Index
             unsigned int currentscheduleIndex = gateController->getscheduleIndex();
             // 获取下一个Index
-            unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % currentSchedule->getControlListLength();
+            unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
             // 获取当前时隙大小
-            simtime_t time_interval = currentSchedule->getTimeInterval(currentscheduleIndex);
+            simtime_t time_interval = newSchedule->getTimeInterval(currentscheduleIndex);
             simtime_t target_time_interval = time_interval;
             // 根据报文延迟重新计算时隙大小
             // trunc()函数将截取浮点数的整数部
@@ -174,9 +156,8 @@ namespace nesting {
                 }
             } 
             // 更新GCL
-            nextSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
-            nextSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
-            gateController->setNextSchedule(nextSchedule);
+            newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
+            newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
 
             // 每次写入当前时间间隔大小
             this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\

@@ -52,8 +52,7 @@ protected:
      * The control list contains tuples of time intervals and scheduled
      * objects.
      */
-    // 为了实现深拷贝，不考虑代码优雅性了，直接把这个放public里面去
-    // std::vector<ControlListEntry> controlList;
+    std::vector<ControlListEntry> controlList;
 
     /**
      * The base time is considered when starting a schedule. Valid starting

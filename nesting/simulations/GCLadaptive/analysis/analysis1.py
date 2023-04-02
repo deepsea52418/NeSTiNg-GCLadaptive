@@ -40,18 +40,18 @@ TT_delay = []
 BE_delay = []
 for item in delay_table:
     if item['pcp'] == 7:
-        time1.append(item['time'] * 1000) # 转化为以毫秒为单位
-        TT_delay.append(item['e2edelay'] * 1000) # 转化为以毫秒为单位
+        time1.append(item['time'] * 1000000) # 转化为以微秒为单位
+        TT_delay.append(item['e2edelay'] * 1000000) # 转化为以微秒为单位
     else:
-        time2.append(item['time'] * 1000)
-        BE_delay.append(item['e2edelay'] * 1000)
+        time2.append(item['time'] * 1000000)
+        BE_delay.append(item['e2edelay'] * 1000000)
 
 # 读取GCL
 # 交换机时隙大小：TT_interval
 TT_interval = []
 for item in gateController_table:
-    time3.append(item['time'] * 1000)
-    TT_interval.append(item['TT-interval'] * 1000) # 转化为以us为单位
+    time3.append(item['time'] * 1000000)
+    TT_interval.append(item['TT-interval'] * 1000000) # 转化为以us为单位
 
 
 # 计算延迟平均值，标准差，最大值，最小值
@@ -79,14 +79,14 @@ ax[1].set_title("TT Interval", fontsize=18)
 ax[0].set_xlabel('time (ms)', fontsize=18)
 ax[1].set_xlabel('time (ms)', fontsize=18)
 # y轴设置 从0~1，每各0.05一个刻度
-y1, y2 = 0, 1.05
-dy_1 = 0.05
+y1, y2 = 0, 1050
+dy_1 = 50
 ax[0].set_yticks(np.arange(y1, y2, dy_1))
-ax[0].set_ylabel('end2end delay(ms)', fontsize=18)
-y3, y4 = 0, 1.05
-dy_2 = 0.05
+ax[0].set_ylabel('end2end delay(us)', fontsize=18)
+y3, y4 = 0, 450
+dy_2 = 50
 ax[1].set_yticks(np.arange(y3, y4, dy_2))
-ax[1].set_ylabel('TT Interval(ms)', fontsize=18)
+ax[1].set_ylabel('TT Interval(us)', fontsize=18)
 # 绘制曲线
 ax[0].plot(time1, TT_delay, color='g',marker='.', linewidth=1, label='TT End2end Delay')
 ax[0].plot(time2, BE_delay, color='r',marker='.',linewidth=1, label = "BE End2end Delay")

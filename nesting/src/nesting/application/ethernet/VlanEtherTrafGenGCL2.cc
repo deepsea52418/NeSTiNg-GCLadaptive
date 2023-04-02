@@ -18,7 +18,7 @@
 #include "nesting/application/ethernet/VlanEtherTrafGenSched.h"
 // 引入gatecontroller头文件
 #include "nesting/ieee8021q/queue/gating/GateController.h"
-
+//
 #include "inet/common/TimeTag_m.h"
 #include "inet/linklayer/common/Ieee802SapTag_m.h"
 #include "inet/linklayer/common/MacAddressTag_m.h"
@@ -32,25 +32,9 @@
 namespace nesting {
 
     Define_Module(VlanEtherTrafGenGCL2);
-
-    // 由于代码中需要创建Schedule<GateBitvector>对象，需要写一个析构函数
-    VlanEtherTrafGenGCL2::~VlanEtherTrafGenGCL2(){
-        if (currentSchedule != nullptr) {
-            delete currentSchedule;
-        }
-        if (nextSchedule != nullptr) {
-            delete nextSchedule;
-        }
-    }
-
     void VlanEtherTrafGenGCL2::initialize(int stage) {
         EtherTrafGen::initialize(stage);
-
-        // 创建Schedule<GateBitvector>对象，用于后续代码中生成新的GCL表
-        Schedule<GateBitvector>* currentSchedule = new Schedule<GateBitvector>();
-        Schedule<GateBitvector>* nextSchedule = new Schedule<GateBitvector>();
-
-        if (stage == INITSTAGE_LOCAL) {
+       if (stage == INITSTAGE_LOCAL) {
             vlanTagEnabled = &par("vlanTagEnabled");
             pcp = &par("pcp");
             dei = &par("dei");
@@ -131,7 +115,7 @@ namespace nesting {
             delay = simTime() - creationTime; // 计算延迟
         }
 
-
+        // 记录收到报文的时间等信息
         this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\
             << ", \"dest\": \"" << msg->getTag<MacAddressInd>()->getDestAddress() << "\"" \
             << ", \"pcp\": " << msg->getTag<EnhancedVlanInd>()->getPcp() \
@@ -177,39 +161,39 @@ namespace nesting {
 
         // 判断当前报文是否是TT流，若不是TT流，则不进行调节
         if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 ){
-            // 获取当前GCL情况           
-            currentSchedule = gateController->getCurrentSchedule();
-            nextSchedule = currentSchedule;
-            simtime_t schedule_cycle = currentSchedule->getCycleTime();
+           // 获取gatecontroller中的newSchedule对象
+            newSchedule = gateController ->getnewSchedule();
+            simtime_t schedule_cycle = newSchedule->getCycleTime();
             // 获取当前Index
-            unsigned int currentscheduleIndex = gateController->getCurrentscheduleIndex();
+            unsigned int currentscheduleIndex = gateController->getscheduleIndex();
             // 获取下一个Index
-            unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % currentSchedule->getControlListLength();
+            unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
             // 获取当前时隙大小
-            simtime_t time_interval = currentSchedule->getTimeInterval(currentscheduleIndex);
+            simtime_t time_interval = newSchedule->getTimeInterval(currentscheduleIndex);
             simtime_t target_time_interval = time_interval;
             // 根据报文延迟重新计算时隙大小
             // trunc()函数将截取浮点数的整数部
             // 设置触发调节上限为延迟>75us
+            // 设置步长
+            int steplength = 5;
             if (delay >= SimTime(75, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) + SimTime(10, SIMTIME_US)) > (schedule_cycle * 0.9)){
+                if ((time_interval.trunc(SIMTIME_US) + SimTime(steplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
                     target_time_interval = schedule_cycle * 0.9;
                 }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(10, SIMTIME_US);
+                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(steplength, SIMTIME_US);
                 }
             }
-            // 设置触发调节上限为延迟<75us
+            // 设置触发调节上限为延迟<45us
             if (delay <= SimTime(45, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) - SimTime(10, SIMTIME_US)) < (schedule_cycle * 0.1)){
+                if ((time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US)) <= (schedule_cycle * 0.1)){
                     target_time_interval = schedule_cycle * 0.1;
                 }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(10, SIMTIME_US);
+                    target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US);
                 }
             } 
             // 更新GCL
-            nextSchedule->setTimeInterval(currentscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
-            nextSchedule->setTimeInterval(nextscheduleIndex , target_time_interval.trunc(SIMTIME_US));
-            gateController->setNextSchedule(nextSchedule);
+            newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
+            newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
 
             // 每次写入当前时间间隔大小
             this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\
