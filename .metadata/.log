@@ -7798,3 +7798,13 @@ java.lang.RuntimeException:
 java.lang.RuntimeException: 
 	at org.omnetpp.launch.SimulationLauncherJob.run(SimulationLauncherJob.java:153)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui.console 4 0 2023-04-02 14:33:07.921
+!MESSAGE Streams are already closed.
+
+!ENTRY org.omnetpp.launch 4 139 2023-04-02 14:33:07.921
+!MESSAGE Finished with Error
+!STACK 0
+java.lang.RuntimeException: 
+	at org.omnetpp.launch.SimulationLauncherJob.run(SimulationLauncherJob.java:153)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)

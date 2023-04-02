@@ -30,4 +30,4 @@
 *.exe
 *.out
 *.app
-.metadata
+/home/tsn3/omnetpp-5.6.1/workspacegcl/.metadata
