@@ -29,9 +29,9 @@ GateController::~GateController() {
         delete nextSchedule;
     }
     // 析构newSchedule
-    // if (newSchedule != nullptr) {
-    //     delete newSchedule;
-    // }
+    if (newSchedule != nullptr) {
+        delete newSchedule;
+    }
 
     cancelEvent(&updateScheduleMsg);
 }
