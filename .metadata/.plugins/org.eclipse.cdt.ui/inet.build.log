@@ -1,0 +1,42 @@
+22:57:19 **** Incremental Build of configuration release for project inet ****
+make MODE=release -j4 all 
+cd src && make
+make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
+opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
+opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
+*** COMPILING with:
+clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
+*** LINKING with:
+clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
+Building...
+make[1]: Nothing to be done for 'all-pch'.
+make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
+
+22:57:20 Build Finished. 0 errors, 0 warnings. (took 1s.194ms)
+

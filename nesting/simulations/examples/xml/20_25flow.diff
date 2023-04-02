@@ -1,0 +1,86 @@
+--- tsn_feedback_20flows.xml	2022-08-13 08:56:45.079460738 +0800
++++ tsn_feedback_25flows.xml	2022-08-13 08:45:36.363646887 +0800
+@@ -11,6 +11,13 @@
+ 			<flowId>1</flowId>
+ 		</entry>
+ 		<entry>
++			<start>25us</start>
++			<queue>7</queue>
++			<dest>00:00:00:00:00:04</dest>
++			<size>600B</size>
++			<flowId>2</flowId>
++		</entry>
++		<entry>
+ 			<start>50us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
+@@ -49,6 +56,13 @@
+ 			<start>90us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
++			<size>1000B</size>
++			<flowId>8</flowId>
++		</entry>
++		<entry>
++			<start>90us</start>
++			<queue>7</queue>
++			<dest>00:00:00:00:00:04</dest>
+ 			<size>500B</size>
+ 			<flowId>9</flowId>
+ 		</entry>
+@@ -73,6 +87,13 @@
+ 			<size>700B</size>
+ 			<flowId>12</flowId>
+ 		</entry>
++        <entry>
++			<start>175us</start>
++			<queue>7</queue>
++			<dest>00:00:00:00:00:04</dest>
++			<size>600B</size>
++			<flowId>13</flowId>
++		</entry>
+ 		<entry>
+ 			<start>200us</start>
+ 			<queue>7</queue>
+@@ -81,6 +102,13 @@
+ 			<flowId>14</flowId>
+ 		</entry>
+ 		<entry>
++			<start>225us</start>
++			<queue>7</queue>
++			<dest>00:00:00:00:00:04</dest>
++			<size>700B</size>
++			<flowId>15</flowId>
++		</entry>
++		<entry>
+ 			<start>250us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
+@@ -95,6 +123,13 @@
+ 			<flowId>17</flowId>
+ 		</entry>
+ 		<entry>
++			<start>280us</start>
++			<queue>7</queue>
++			<dest>00:00:00:00:00:04</dest>
++			<size>800B</size>
++			<flowId>18</flowId>
++		</entry>
++		<entry>
+ 			<start>285us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
+@@ -148,11 +183,11 @@
+ 		<port id="3">
+ 			<schedule cycleTime="100us">
+ 				<entry>
+-					<length>28us</length>
++					<length>40us</length>
+ 					<bitvector>10000000</bitvector>
+ 				</entry>
+ 				<entry>
+-					<length>72us</length>
++					<length>60us</length>
+ 					<bitvector>01111111</bitvector>
+ 				</entry>
+ 			</schedule>

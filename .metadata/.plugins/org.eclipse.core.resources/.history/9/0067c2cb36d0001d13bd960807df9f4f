@@ -1,0 +1,671 @@
+file 286906 1680307895                                          
+version 2
+run General-0-20230401-08:11:32-12876
+attr configname General
+attr datetime 20230401-08:11:32
+attr experiment General
+attr inifile GCLadaptive.ini
+attr iterationvars ""
+attr iterationvarsf ""
+attr measurement ""
+attr network GCLadaptive
+attr processid 12876
+attr repetition 0
+attr replication #0
+attr resultdir results
+attr runnumber 0
+attr seedset 0
+param **.displayAddresses true
+param **.verbose true
+param **.robotController1.eth.address "\"00-00-00-00-00-01\""
+param **.workstation1.eth.address "\"00-00-00-00-00-02\""
+param **.workstation2.eth.address "\"00-00-00-00-00-03\""
+param **.roboticArm.eth.address "\"00-00-00-00-00-04\""
+param **.robotController2.eth.address "\"00-00-00-00-00-05\""
+param **.switch*.processingDelay.delay 5us
+param **.filteringDatabase.database "xmldoc(\"xml/Routing.xml\", \"/filteringDatabases/\")"
+param **.switchA.eth[3].queue.gateController.initialSchedule "xmldoc(\"xml/GCL.xml\", \"/schedules/switch[@name='switchA']/port[@id='3']/schedule\")"
+param **.switch*.eth[*].queue.gateController.enableHoldAndRelease false
+param **.switch*.eth[*].queue.numberOfQueues 8
+param **.switch*.eth[*].queue.tsAlgorithms[0].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[1].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[2].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[3].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[4].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[5].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[6].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.tsAlgorithms[7].typename "\"StrictPriority\""
+param **.switch*.eth[*].queue.queues[0].expressQueue false
+param **.switch*.eth[*].queue.queues[1].expressQueue false
+param **.switch*.eth[*].queue.queues[2].expressQueue false
+param **.switch*.eth[*].queue.queues[3].expressQueue false
+param **.switch*.eth[*].queue.queues[4].expressQueue false
+param **.switch*.eth[*].queue.queues[5].expressQueue false
+param **.switch*.eth[*].queue.queues[6].expressQueue false
+param **.switch*.eth[*].queue.queues[7].expressQueue true
+param **.gateController.result_file_location "\"results/gateController.txt\""
+param **.queues[*].bufferCapacity 363360b
+param **.switchA.eth[3].mac.enablePreemptingFrames true
+param **.robotController1.trafGenSchedApp.initialSchedule "xmldoc(\"xml/GCL.xml\")"
+param **.robotController2.trafGenSchedApp.initialSchedule "xmldoc(\"xml/GCL.xml\")"
+param **.robotController2.trafGenSchedApp.startTime 2ms
+param **.workstation*.trafGenApp.destAddress "\"00-00-00-00-00-04\""
+param **.workstation*.trafGenApp.packetLength 1500Byte-4Byte
+param **.workstation*.trafGenApp.sendInterval 50us
+param **.workstation*.trafGenApp.vlanTagEnabled true
+param **.workstation1.trafGenApp.pcp 6
+param **.workstation2.trafGenApp.pcp 5
+param **.roboticArm.trafGenApp.numPacketsPerBurst 0
+param **.roboticArm.trafGenApp.sendInterval 1ms
+param **.roboticArm.trafGenApp.packetLength 100B
+param **.roboticArm.trafGenApp.result_file_location "\"results/roboticArm.txt\""
+
+vector 0 GCLadaptive.switchA.eth[0].queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 1 GCLadaptive.switchA.eth[0].queue.queues[1] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 2 GCLadaptive.switchA.eth[0].queue.queues[2] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 3 GCLadaptive.switchA.eth[0].queue.queues[3] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 4 GCLadaptive.switchA.eth[0].queue.queues[4] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 5 GCLadaptive.switchA.eth[0].queue.queues[5] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 6 GCLadaptive.switchA.eth[0].queue.queues[6] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 7 GCLadaptive.switchA.eth[0].queue.queues[7] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 8 GCLadaptive.switchA.eth[1].queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 9 GCLadaptive.switchA.eth[1].queue.queues[1] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 10 GCLadaptive.switchA.eth[1].queue.queues[2] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 11 GCLadaptive.switchA.eth[1].queue.queues[3] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 12 GCLadaptive.switchA.eth[1].queue.queues[4] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 13 GCLadaptive.switchA.eth[1].queue.queues[5] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 14 GCLadaptive.switchA.eth[1].queue.queues[6] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 15 GCLadaptive.switchA.eth[1].queue.queues[7] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 16 GCLadaptive.switchA.eth[2].queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 17 GCLadaptive.switchA.eth[2].queue.queues[1] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 18 GCLadaptive.switchA.eth[2].queue.queues[2] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 19 GCLadaptive.switchA.eth[2].queue.queues[3] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 20 GCLadaptive.switchA.eth[2].queue.queues[4] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 21 GCLadaptive.switchA.eth[2].queue.queues[5] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 22 GCLadaptive.switchA.eth[2].queue.queues[6] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 23 GCLadaptive.switchA.eth[2].queue.queues[7] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 24 GCLadaptive.switchA.eth[3].queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 25 GCLadaptive.switchA.eth[3].queue.queues[1] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 26 GCLadaptive.switchA.eth[3].queue.queues[2] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 27 GCLadaptive.switchA.eth[3].queue.queues[3] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 28 GCLadaptive.switchA.eth[3].queue.queues[4] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 29 GCLadaptive.switchA.eth[3].queue.queues[5] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 30 GCLadaptive.switchA.eth[3].queue.queues[6] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 31 GCLadaptive.switchA.eth[3].queue.queues[7] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 32 GCLadaptive.switchA.eth[4].queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 33 GCLadaptive.switchA.eth[4].queue.queues[1] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 34 GCLadaptive.switchA.eth[4].queue.queues[2] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 35 GCLadaptive.switchA.eth[4].queue.queues[3] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 36 GCLadaptive.switchA.eth[4].queue.queues[4] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 37 GCLadaptive.switchA.eth[4].queue.queues[5] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 38 GCLadaptive.switchA.eth[4].queue.queues[6] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 39 GCLadaptive.switchA.eth[4].queue.queues[7] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 40 GCLadaptive.workstation1.eth.queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 41 GCLadaptive.workstation2.eth.queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 42 GCLadaptive.robotController1.eth.queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 43 GCLadaptive.robotController2.eth.queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 44 GCLadaptive.roboticArm.eth.queue.queues[0] queueLength:vector ETV
+attr interpolationmode sample-hold
+attr title "queue length, vector"
+vector 45 GCLadaptive.switchA.eth[3].queue.tGates[0] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 46 GCLadaptive.switchA.eth[3].queue.tGates[1] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 47 GCLadaptive.switchA.eth[3].queue.tGates[2] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 48 GCLadaptive.switchA.eth[3].queue.tGates[3] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 49 GCLadaptive.switchA.eth[3].queue.tGates[4] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 50 GCLadaptive.switchA.eth[3].queue.tGates[5] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 51 GCLadaptive.switchA.eth[3].queue.tGates[6] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 52 GCLadaptive.robotController1.trafGenSchedApp pktSentFlowId:vector ETV
+attr interpolationmode none
+attr source flowId(sentPk)
+attr title "packet sent with flow id, vector"
+vector 53 GCLadaptive.robotController1.trafGenSchedApp pktSentSeqNum:vector ETV
+attr interpolationmode none
+attr source seqNum(sentPk)
+attr title "packet sent with sequence number, vector"
+vector 54 GCLadaptive.robotController1.trafGenSchedApp pktSentTreeId:vector ETV
+attr interpolationmode none
+attr source sentPkTreeId
+attr title "packet sent with tree id, vector"
+vector 55 GCLadaptive.robotController1.eth.encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 56 GCLadaptive.robotController1.eth.queue.queues[0] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 57 GCLadaptive.robotController1.eth.queue.queues[0] enqueuePk:vector ETV
+attr interpolationmode none
+vector 58 GCLadaptive.robotController1.eth.queue.queues[0] dequeuePk:vector ETV
+attr interpolationmode none
+vector 59 GCLadaptive.robotController1.eth.queue.queues[0] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 60 GCLadaptive.robotController1.eth.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 61 GCLadaptive.robotController1.eth.mac eMacDelay:vector ETV
+attr interpolationmode none
+attr title "eMacDelay, vector"
+vector 62 GCLadaptive.robotController1.eth.mac startTxExpressFrames:vector ETV
+attr interpolationmode none
+attr source startTransmissionExpressFrameSignal
+attr title "startTxExpressFrames, vector"
+vector 63 GCLadaptive.robotController1.eth.mac txExpressFrame:vector ETV
+attr interpolationmode none
+attr source transmittedExpressFrameSignal
+attr title "txExpressFrame, vector"
+vector 64 GCLadaptive.robotController1.eth.mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 65 GCLadaptive.switchA.eth[0].mac receivedExpressFrame:vector ETV
+attr interpolationmode none
+attr title "receivedExpressFrame, vector"
+vector 66 GCLadaptive.switchA.eth[0].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 67 GCLadaptive.switchA.eth[0].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 68 GCLadaptive.switchA.processingDelay packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 69 GCLadaptive.switchA.processingDelay delay:vector ETV
+attr interpolationmode none
+attr source delay
+attr title "packet delay, vector"
+vector 70 GCLadaptive.switchA.processingDelay packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 71 GCLadaptive.switchA.eth[3].queue.queues[7] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 72 GCLadaptive.switchA.eth[3].queue.queues[7] enqueuePk:vector ETV
+attr interpolationmode none
+vector 73 GCLadaptive.switchA.eth[3].queue.queues[7] dequeuePk:vector ETV
+attr interpolationmode none
+vector 74 GCLadaptive.switchA.eth[3].queue.queues[7] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 75 GCLadaptive.switchA.eth[3].mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 76 GCLadaptive.switchA.eth[3].mac eMacDelay:vector ETV
+attr interpolationmode none
+attr title "eMacDelay, vector"
+vector 77 GCLadaptive.switchA.eth[3].mac startTxExpressFrames:vector ETV
+attr interpolationmode none
+attr source startTransmissionExpressFrameSignal
+attr title "startTxExpressFrames, vector"
+vector 78 GCLadaptive.switchA.eth[3].mac txExpressFrame:vector ETV
+attr interpolationmode none
+attr source transmittedExpressFrameSignal
+attr title "txExpressFrame, vector"
+vector 79 GCLadaptive.switchA.eth[3].mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 80 GCLadaptive.roboticArm.eth.mac receivedExpressFrame:vector ETV
+attr interpolationmode none
+attr title "receivedExpressFrame, vector"
+vector 81 GCLadaptive.roboticArm.eth.mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 82 GCLadaptive.roboticArm.eth.mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 83 GCLadaptive.roboticArm.eth.encap decapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source decapPk
+attr title "packets decapsulated, vector(packetBytes)"
+vector 84 GCLadaptive.roboticArm.trafGenApp packetReceived:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceived
+attr title "packets received, vector(packetBytes)"
+vector 85 GCLadaptive.roboticArm.trafGenApp endToEndDelay:vector ETV
+attr interpolationmode none
+attr source dataAge(packetReceived)
+attr title "end-to-end delay, vector"
+attr unit s
+vector 86 GCLadaptive.workstation1.trafGenApp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 87 GCLadaptive.workstation2.trafGenApp packetSent:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSent
+attr title "packets sent, vector(packetBytes)"
+vector 88 GCLadaptive.workstation1.eth.encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 89 GCLadaptive.workstation2.eth.encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 90 GCLadaptive.workstation1.eth.queue.queues[0] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 91 GCLadaptive.workstation1.eth.queue.queues[0] enqueuePk:vector ETV
+attr interpolationmode none
+vector 92 GCLadaptive.workstation2.eth.queue.queues[0] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 93 GCLadaptive.workstation2.eth.queue.queues[0] enqueuePk:vector ETV
+attr interpolationmode none
+vector 94 GCLadaptive.workstation1.eth.queue.queues[0] dequeuePk:vector ETV
+attr interpolationmode none
+vector 95 GCLadaptive.workstation1.eth.queue.queues[0] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 96 GCLadaptive.workstation1.eth.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 97 GCLadaptive.workstation1.eth.mac eMacDelay:vector ETV
+attr interpolationmode none
+attr title "eMacDelay, vector"
+vector 98 GCLadaptive.workstation1.eth.mac startTxExpressFrames:vector ETV
+attr interpolationmode none
+attr source startTransmissionExpressFrameSignal
+attr title "startTxExpressFrames, vector"
+vector 99 GCLadaptive.workstation2.eth.queue.queues[0] dequeuePk:vector ETV
+attr interpolationmode none
+vector 100 GCLadaptive.workstation2.eth.queue.queues[0] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 101 GCLadaptive.workstation2.eth.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 102 GCLadaptive.workstation2.eth.mac eMacDelay:vector ETV
+attr interpolationmode none
+attr title "eMacDelay, vector"
+vector 103 GCLadaptive.workstation2.eth.mac startTxExpressFrames:vector ETV
+attr interpolationmode none
+attr source startTransmissionExpressFrameSignal
+attr title "startTxExpressFrames, vector"
+vector 104 GCLadaptive.workstation1.eth.mac txExpressFrame:vector ETV
+attr interpolationmode none
+attr source transmittedExpressFrameSignal
+attr title "txExpressFrame, vector"
+vector 105 GCLadaptive.workstation1.eth.mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 106 GCLadaptive.workstation2.eth.mac txExpressFrame:vector ETV
+attr interpolationmode none
+attr source transmittedExpressFrameSignal
+attr title "txExpressFrame, vector"
+vector 107 GCLadaptive.workstation2.eth.mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 108 GCLadaptive.switchA.eth[1].mac receivedExpressFrame:vector ETV
+attr interpolationmode none
+attr title "receivedExpressFrame, vector"
+vector 109 GCLadaptive.switchA.eth[1].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 110 GCLadaptive.switchA.eth[1].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 111 GCLadaptive.switchA.eth[2].mac receivedExpressFrame:vector ETV
+attr interpolationmode none
+attr title "receivedExpressFrame, vector"
+vector 112 GCLadaptive.switchA.eth[2].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 113 GCLadaptive.switchA.eth[2].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+vector 114 GCLadaptive.switchA.eth[3].queue.tGates[7] gateStateChanged:vector ETV
+attr interpolationmode none
+attr title "gateStateChanged, vector"
+vector 115 GCLadaptive.switchA.eth[3].queue.queues[6] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 116 GCLadaptive.switchA.eth[3].queue.queues[6] enqueuePk:vector ETV
+attr interpolationmode none
+vector 117 GCLadaptive.switchA.eth[3].queue.queues[5] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 118 GCLadaptive.switchA.eth[3].queue.queues[5] enqueuePk:vector ETV
+attr interpolationmode none
+vector 119 GCLadaptive.switchA.eth[3].queue.queues[6] dequeuePk:vector ETV
+attr interpolationmode none
+vector 120 GCLadaptive.switchA.eth[3].queue.queues[6] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 121 GCLadaptive.switchA.eth[3].mac receivedExpressFrameFromUpper:vector ETV
+attr interpolationmode none
+attr title "receivedExpressFrameFromUpper, vector"
+vector 122 GCLadaptive.switchA.eth[3].mac pMacDelay:vector ETV
+attr interpolationmode none
+attr title "pMacDelay, vector"
+vector 123 GCLadaptive.switchA.eth[3].mac txPreemptableFrameFull:vector ETV
+attr interpolationmode none
+attr source transmittedPreemptableFullSignal
+attr title "txPreemptableFrameFull, vector"
+vector 124 GCLadaptive.switchA.eth[3].queue.queues[5] dequeuePk:vector ETV
+attr interpolationmode none
+vector 125 GCLadaptive.switchA.eth[3].queue.queues[5] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 126 GCLadaptive.roboticArm.eth.mac receivedPreemptableFrameFull:vector ETV
+attr interpolationmode none
+attr title "receivedPreemptableFrameFull, vector"
+vector 127 GCLadaptive.robotController2.trafGenSchedApp pktSentFlowId:vector ETV
+attr interpolationmode none
+attr source flowId(sentPk)
+attr title "packet sent with flow id, vector"
+vector 128 GCLadaptive.robotController2.trafGenSchedApp pktSentSeqNum:vector ETV
+attr interpolationmode none
+attr source seqNum(sentPk)
+attr title "packet sent with sequence number, vector"
+vector 129 GCLadaptive.robotController2.trafGenSchedApp pktSentTreeId:vector ETV
+attr interpolationmode none
+attr source sentPkTreeId
+attr title "packet sent with tree id, vector"
+vector 130 GCLadaptive.robotController2.eth.encap encapPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source encapPk
+attr title "packets encapsulated, vector(packetBytes)"
+vector 131 GCLadaptive.robotController2.eth.queue.queues[0] rcvdPk:vector ETV
+attr interpolationmode none
+attr title "received packets, vector"
+vector 132 GCLadaptive.robotController2.eth.queue.queues[0] enqueuePk:vector ETV
+attr interpolationmode none
+vector 133 GCLadaptive.robotController2.eth.queue.queues[0] dequeuePk:vector ETV
+attr interpolationmode none
+vector 134 GCLadaptive.robotController2.eth.queue.queues[0] queueingTime:vector ETV
+attr interpolationmode none
+attr title "queueing time, vector"
+vector 135 GCLadaptive.robotController2.eth.mac packetReceivedFromUpper:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetReceivedFromUpper
+attr title "packet bytes from higher layer, vector(packetBytes)"
+vector 136 GCLadaptive.robotController2.eth.mac eMacDelay:vector ETV
+attr interpolationmode none
+attr title "eMacDelay, vector"
+vector 137 GCLadaptive.robotController2.eth.mac startTxExpressFrames:vector ETV
+attr interpolationmode none
+attr source startTransmissionExpressFrameSignal
+attr title "startTxExpressFrames, vector"
+vector 138 GCLadaptive.robotController2.eth.mac txExpressFrame:vector ETV
+attr interpolationmode none
+attr source transmittedExpressFrameSignal
+attr title "txExpressFrame, vector"
+vector 139 GCLadaptive.robotController2.eth.mac txPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToLower
+attr title "packets transmitted, vector(packetBytes)"
+vector 140 GCLadaptive.switchA.eth[4].mac receivedExpressFrame:vector ETV
+attr interpolationmode none
+attr title "receivedExpressFrame, vector"
+vector 141 GCLadaptive.switchA.eth[4].mac rxPkOk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source rxPkOk
+attr title "packets received OK, vector(packetBytes)"
+vector 142 GCLadaptive.switchA.eth[4].mac passedUpPk:vector(packetBytes) ETV
+attr interpolationmode none
+attr source packetSentToUpper
+attr title "packets passed to higher layer, vector(packetBytes)"
+0	25277 8 0 0 0 0 1 0 0 0 0
+1	25285 8 0 0 0 0 1 0 0 0 0
+2	25293 8 0 0 0 0 1 0 0 0 0
+3	25301 8 0 0 0 0 1 0 0 0 0
+4	25309 8 0 0 0 0 1 0 0 0 0
+5	25317 8 0 0 0 0 1 0 0 0 0
+6	25325 8 0 0 0 0 1 0 0 0 0
+7	25333 8 0 0 0 0 1 0 0 0 0
+8	25341 8 0 0 0 0 1 0 0 0 0
+9	25349 8 0 0 0 0 1 0 0 0 0
+10	25357 9 0 0 0 0 1 0 0 0 0
+11	25366 9 0 0 0 0 1 0 0 0 0
+12	25375 9 0 0 0 0 1 0 0 0 0
+13	25384 9 0 0 0 0 1 0 0 0 0
+14	25393 9 0 0 0 0 1 0 0 0 0
+15	25402 9 0 0 0 0 1 0 0 0 0
+16	25411 9 0 0 0 0 1 0 0 0 0
+17	25420 9 0 0 0 0 1 0 0 0 0
+18	25429 9 0 0 0 0 1 0 0 0 0
+19	25438 9 0 0 0 0 1 0 0 0 0
+20	25447 9 0 0 0 0 1 0 0 0 0
+21	25456 9 0 0 0 0 1 0 0 0 0
+22	25465 9 0 0 0 0 1 0 0 0 0
+23	25474 9 0 0 0 0 1 0 0 0 0
+24	25483 9 0 0 0 0 1 0 0 0 0
+25	25492 9 0 0 0 0 1 0 0 0 0
+26	25501 9 0 0 0 0 1 0 0 0 0
+27	25510 9 0 0 0 0 1 0 0 0 0
+28	25519 9 0 0 0 0 1 0 0 0 0
+29	25528 4391 0 12951 0 0.004979516 199 0 2 123 147
+30	29919 4355 0 12941 0 0.004967308 199 0 1 99 99
+31	34274 4040 0 12713 0 0.00486262 193 0 2 112 128
+32	38314 9 0 0 0 0 1 0 0 0 0
+33	38323 9 0 0 0 0 1 0 0 0 0
+34	38332 9 0 0 0 0 1 0 0 0 0
+35	38341 9 0 0 0 0 1 0 0 0 0
+36	38350 9 0 0 0 0 1 0 0 0 0
+37	38359 9 0 0 0 0 1 0 0 0 0
+38	38368 9 0 0 0 0 1 0 0 0 0
+39	38377 9 0 0 0 0 1 0 0 0 0
+40	38386 3525 0 12984 0 0.005 201 0 1 100 100
+41	41911 3525 0 12992 0 0.005 201 0 1 100 100
+42	45436 2552 0 12464 0 0.004825 131 0 1 65 65
+43	47988 1257 0 12652 0 0.00485408 65 0 1 32 32
+44	49245 9 0 0 0 0 1 0 0 0 0
+45	49254 463 17 12719 0 0.004865 26 0 1 13 13
+46	49717 463 18 12720 0 0.004865 26 0 1 13 13
+47	50180 463 19 12721 0 0.004865 26 0 1 13 13
+48	50643 463 20 12722 0 0.004865 26 0 1 13 13
+49	51106 463 21 12723 0 0.004865 26 0 1 13 13
+50	51569 463 22 12724 0 0.004865 26 0 1 13 13
+51	52032 463 23 12725 0 0.004865 26 0 1 13 13
+52	52495 1226 35 12454 0.000002 0.004825 65 1 5 195 715
+53	53721 1241 35 12454 0.000002 0.004825 65 0 12 390 3250
+54	54962 1406 35 12454 0.000002 0.004825 65 442 3090 112226 237954364
+55	56368 1356 36 12455 0.000002 0.004825 65 400 900 40300 27690000
+56	57724 1406 39 12458 0.000002 0.004825 65 442 3090 112226 237954364
+57	59130 1406 39 12458 0.000002 0.004825 65 442 3090 112226 237954364
+58	60536 1497 45 12464 0.000002 0.004825 65 442 3090 112226 237954364
+59	62033 1551 45 12464 0.000002 0.004825 65 0 4.8e-07 1.352e-05 5.6992e-12
+60	63584 1447 49 12468 0.000002 0.004825 65 422 922 41730 29494660
+61	65031 1842 49 12468 0.000002 0.004825 65 2e-06 0.004825 0.15678052 0.0005237602957392
+62	66873 1497 49 12468 0.000002 0.004825 65 442 3090 112226 237954364
+63	68370 1551 59 12469 0.00000544 0.00482844 65 442 3090 112226 237954364
+64	69921 1501 59 12469 0.00000544 0.00482844 65 422 922 41730 29494660
+65	71422 1552 69 12472 0.00000554 0.00482854 65 442 3090 112226 237954364
+66	72974 1502 69 12472 0.00000554 0.00482854 65 422 922 41730 29494660
+67	74476 1502 69 12472 0.00000554 0.00482854 65 422 922 41730 29494660
+68	75978 7224 72 12925 0.00000554 0.004962308 295 422 1518 358998 495430300
+69	83202 7616 72 12925 0.00000554 0.004962308 295 5e-06 5e-06 0.001475 7.375e-09
+70	90818 7226 92 12927 0.00001054 0.004967308 295 422 1518 358998 495430300
+71	98044 2333 95 12713 0.00001054 0.00486262 97 442 3118 185890 416417980
+72	100377 2333 95 12713 0.00001054 0.00486262 97 442 3118 185890 416417980
+73	102710 2244 101 12670 0.00001054 0.00485574 95 442 3102 179662 397023956
+74	104954 2191 101 12670 0.00001054 0.00485574 95 0 0.00034082 0.00481776 1.6263805704e-06
+75	107145 7104 105 12955 0.00001054 0.004979516 293 422 1518 358154 495074132
+76	114249 2823 105 12674 0.00001054 0.00485574 95 1.054e-05 7.6224e-05 0.00419818 2.136474732e-07
+77	117072 2244 105 12674 0.00001054 0.00485574 95 442 3102 179662 397023956
+78	119316 2273 110 12703 0.00001398 0.00486238 95 442 3102 179662 397023956
+79	121589 7170 110 12960 0.00001398 0.004991724 293 422 1518 358154 495074132
+80	128759 2273 113 12706 0.00001408 0.00486248 95 442 3102 179662 397023956
+81	131032 7170 113 12963 0.00001408 0.004991824 293 422 1518 358154 495074132
+82	138202 7170 113 12963 0.00001408 0.004991824 293 422 1518 358154 495074132
+83	145372 7171 115 12965 0.00001408 0.004991824 293 400 1496 351708 479457168
+84	152543 7171 116 12966 0.00001408 0.004991824 293 400 1496 351708 479457168
+85	159714 8942 116 12966 0.00001408 0.004991824 293 1.208e-05 0.00035354 0.01501168 2.22991861584e-06
+86	168656 2058 254 12967 0.00005 0.005 100 1496 1496 149600 223801600
+87	170714 2058 255 12968 0.00005 0.005 100 1496 1496 149600 223801600
+88	172772 2058 257 12969 0.00005 0.005 100 1496 1496 149600 223801600
+89	174830 2058 259 12970 0.00005 0.005 100 1496 1496 149600 223801600
+90	176888 2036 264 12975 0.00005 0.005 100 472 3199 178955 384591183
+91	178924 2036 264 12975 0.00005 0.005 100 472 3199 178955 384591183
+92	180960 2036 265 12976 0.00005 0.005 100 474 3200 179056 384950140
+93	182996 2036 265 12976 0.00005 0.005 100 474 3200 179056 384950140
+94	185032 2036 273 12984 0.00005 0.005 100 472 3199 178955 384591183
+95	187068 1758 273 12984 0.00005 0.005 100 0 0 0 0
+96	188826 2058 277 12988 0.00005 0.005 100 1518 1518 151800 230432400
+97	190884 2301 277 12988 0.00005 0.005 100 5e-05 0.005 0.2525 0.000845875
+98	193185 2036 277 12988 0.00005 0.005 100 472 3199 178955 384591183
+99	195221 2036 281 12992 0.00005 0.005 100 474 3200 179056 384950140
+100	197257 1858 281 12992 0.00005 0.005 100 0 0 0 0
+101	199115 2158 285 12996 0.00005 0.005 100 1518 1518 151800 230432400
+102	201273 2401 285 12996 0.00005 0.005 100 5e-05 0.005 0.2525 0.000845875
+103	203674 2136 285 12996 0.00005 0.005 100 474 3200 179056 384950140
+104	205810 2564 286 12912 0.000062208 0.004962208 99 472 3177 175756 374357582
+105	208374 2586 286 12912 0.000062208 0.004962208 99 1518 1518 150282 228128076
+106	210960 2564 287 12913 0.000062208 0.004962208 99 474 3178 175856 374710140
+107	213524 2586 287 12913 0.000062208 0.004962208 99 1518 1518 150282 228128076
+108	216110 2564 292 12918 0.000062308 0.004962308 99 472 3177 175756 374357582
+109	218674 2586 292 12918 0.000062308 0.004962308 99 1518 1518 150282 228128076
+110	221260 2586 292 12918 0.000062308 0.004962308 99 1518 1518 150282 228128076
+111	223846 2564 293 12919 0.000062308 0.004962308 99 474 3178 175856 374710140
+112	226410 2586 293 12919 0.000062308 0.004962308 99 1518 1518 150282 228128076
+113	228996 2586 293 12919 0.000062308 0.004962308 99 1518 1518 150282 228128076
+114	231582 478 309 12726 0.000065 0.004865 25 0 1 12 12
+115	232060 2565 316 12932 0.000067308 0.004967308 99 472 3177 175756 374357582
+116	234625 2565 316 12932 0.000067308 0.004967308 99 472 3177 175756 374357582
+117	237190 2565 317 12933 0.000067308 0.004967308 99 474 3178 175856 374710140
+118	239755 2565 317 12933 0.000067308 0.004967308 99 474 3178 175856 374710140
+119	242320 2529 325 12941 0.000067308 0.004967308 99 472 3177 175756 374357582
+120	244849 2434 325 12941 0.000067308 0.004967308 99 0 4.7692e-05 0.000691104 2.8470442368e-08
+121	247283 5094 329 12955 0.000067308 0.004979516 198 472 3178 351612 749067722
+122	252377 6424 329 12955 0.000067308 0.004979516 198 9.26e-06 0.000342416 0.030928176 6.959971773952e-06
+123	258801 5131 330 12960 0.000079516 0.004991724 198 472 3178 351612 749067722
+124	263932 2565 335 12951 0.000079516 0.004979516 99 474 3178 175856 374710140
+125	266497 3181 335 12951 0.000079516 0.004979516 99 1.2208e-05 7.2108e-05 0.002192688 8.770346304e-08
+126	269678 5131 340 12963 0.000079616 0.004991824 198 472 3178 351612 749067722
+127	274809 636 4826 12639 0.00204 0.004854 32 6 9 240 1840
+128	275445 636 4826 12639 0.00204 0.004854 32 0 7 112 560
+129	276081 732 4826 12639 0.00204 0.004854 32 1488 3118 73664 178463616
+130	276813 700 4827 12640 0.00204 0.004854 32 400 800 16000 8960000
+131	277513 732 4830 12643 0.00204 0.004854 32 1488 3118 73664 178463616
+132	278245 732 4830 12643 0.00204 0.004854 32 1488 3118 73664 178463616
+133	278977 772 4836 12652 0.00204 0.00485408 32 1488 3118 73664 178463616
+134	279749 756 4836 12652 0.00204 0.00485408 32 0 6.4e-07 5.76e-06 3.328e-12
+135	280505 740 4840 12656 0.00204 0.00485408 32 422 822 16704 9679488
+136	281245 924 4840 12656 0.00204 0.00485408 32 0.00204 0.00485408 0.11030976 0.000407138568448
+137	282169 772 4840 12656 0.00204 0.00485408 32 1488 3118 73664 178463616
+138	282941 812 4848 12675 0.00204344 0.00485752 32 1488 3118 73664 178463616
+139	283753 780 4848 12675 0.00204344 0.00485752 32 422 822 16704 9679488
+140	284533 812 4851 12678 0.00204354 0.00485762 32 1488 3118 73664 178463616
+141	285345 780 4851 12678 0.00204354 0.00485762 32 422 822 16704 9679488
+142	286125 780 4851 12678 0.00204354 0.00485762 32 422 822 16704 9679488
+

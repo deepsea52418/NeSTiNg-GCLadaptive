@@ -1,0 +1,12 @@
+DataTable.HISTOGRAM.Count.width=250
+DataTable.HISTOGRAM.Kind.width=213
+DataTable.HISTOGRAM.Module.width=853
+DataTable.HISTOGRAM.Name.width=774
+DataTable.SCALAR.Module.width=903
+DataTable.SCALAR.Name.width=1286
+DataTable.SCALAR.Value.width=265
+DataTable.VECTOR.Count.width=218
+DataTable.VECTOR.Module.width=776
+DataTable.VECTOR.Name.width=878
+DataTable.VECTOR.StdDev.width=1974
+eclipse.preferences.version=1

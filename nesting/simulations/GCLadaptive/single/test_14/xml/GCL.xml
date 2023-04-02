@@ -1,0 +1,94 @@
+<?xml version="1.0" ?>
+<schedules>
+	<defaultcycle>400us</defaultcycle>
+	<host name="robotController1">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>900B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+		<entry>
+			<start>15us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>3</flowId>
+		</entry>
+		<entry>
+			<start>22us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>500B</size>
+			<flowId>4</flowId>
+		</entry>
+		<entry>
+			<start>27us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>200B</size>
+			<flowId>5</flowId>
+		</entry>
+	</host>
+	<host name="robotController2">
+		<cycle>400us</cycle>
+		<entry>
+			<start>40us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>900B</size>
+			<flowId>6</flowId>
+		</entry>
+		<entry>
+			<start>48us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>7</flowId>
+		</entry>
+		<entry>
+			<start>55us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>8</flowId>
+		</entry>
+		<entry>
+			<start>62us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>500B</size>
+			<flowId>9</flowId>
+		</entry>
+		<entry>
+			<start>67us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>200B</size>
+			<flowId>10</flowId>
+		</entry>
+	</host>
+	<switch name="switchA">
+		<port id="3">
+			<schedule cycleTime="400us">
+				<entry>
+					<length>80us</length>
+					<bitvector>10000000</bitvector>
+				</entry>
+				<entry>
+					<length>320us</length>
+					<bitvector>01111111</bitvector>
+				</entry>
+			</schedule>
+		</port>
+	</switch>
+</schedules>

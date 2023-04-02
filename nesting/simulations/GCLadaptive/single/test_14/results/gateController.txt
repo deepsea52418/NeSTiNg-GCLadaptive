@@ -1,0 +1,5 @@
+{ "time": 0, "cycletime": "1", "TT-gcl": "11111111", "TT-interval": 1, "BE-gcl": "11111111", "BE-interval": 1 } 
+val": 0.00032 } 
+{ "time": 0.0004, "cycletime": "0.0004", "TT-gcl": "10000000", "TT-interval": 0.000055, "BE-gcl": "01111111", "BE-interval": 0.000345 } 
+{ "time": 0.0008, "cycletime": "0.0004", "TT-gcl": "10000000", "TT-interval": 0.00004, "BE-gcl": "01111111", "BE-interval": 0.00036 } 
+{ "time": 0.0012, "cycletime": "0.0004", "TT-gcl": "10000000", "TT-interval": 0.00004, "BE-gcl": "01111111", "BE-interval": 0.00036 } 

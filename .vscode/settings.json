@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "dynamiclibrary": "cpp",
+        "ostream": "cpp",
+        "cmath": "cpp"
+    }
+}

@@ -1,0 +1,1 @@
+{ "time": 0, "cycletime": "0.0004", "TT-gcl": "10000000", "TT-interval": 0.00004, "BE-gcl": "01111111", "BE-interval": 0.00036 } 

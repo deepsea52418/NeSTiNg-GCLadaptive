@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;nesting/simulations/GCLadaptive/01_GCLadaptive.ned&apos; to &apos;GCLadaptive_01.ned&apos;" description="Rename resource &apos;01_GCLadaptive.ned&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="simulations/GCLadaptive/01_GCLadaptive.ned" name="GCLadaptive_01.ned" stamp="1678002170113" updateReferences="true"/>
+</session>

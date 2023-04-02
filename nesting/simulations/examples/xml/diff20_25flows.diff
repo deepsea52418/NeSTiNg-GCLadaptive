@@ -1,0 +1,72 @@
+--- tsn_feedback_25flows.xml	2022-07-31 15:53:38.593386398 +0800
++++ tsn_feedback_20flows.xml	2022-08-11 22:38:42.191873893 +0800
+@@ -11,13 +11,6 @@
+ 			<flowId>1</flowId>
+ 		</entry>
+ 		<entry>
+-			<start>25us</start>
+-			<queue>7</queue>
+-			<dest>00:00:00:00:00:04</dest>
+-			<size>600B</size>
+-			<flowId>2</flowId>
+-		</entry>
+-		<entry>
+ 			<start>50us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
+@@ -56,13 +49,6 @@
+ 			<start>90us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
+-			<size>1000B</size>
+-			<flowId>8</flowId>
+-		</entry>
+-		<entry>
+-			<start>90us</start>
+-			<queue>7</queue>
+-			<dest>00:00:00:00:00:04</dest>
+ 			<size>500B</size>
+ 			<flowId>9</flowId>
+ 		</entry>
+@@ -87,13 +73,6 @@
+ 			<size>700B</size>
+ 			<flowId>12</flowId>
+ 		</entry>
+-        <entry>
+-			<start>175us</start>
+-			<queue>7</queue>
+-			<dest>00:00:00:00:00:04</dest>
+-			<size>600B</size>
+-			<flowId>13</flowId>
+-		</entry>
+ 		<entry>
+ 			<start>200us</start>
+ 			<queue>7</queue>
+@@ -102,13 +81,6 @@
+ 			<flowId>14</flowId>
+ 		</entry>
+ 		<entry>
+-			<start>225us</start>
+-			<queue>7</queue>
+-			<dest>00:00:00:00:00:04</dest>
+-			<size>700B</size>
+-			<flowId>15</flowId>
+-		</entry>
+-		<entry>
+ 			<start>250us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>
+@@ -123,13 +95,6 @@
+ 			<flowId>17</flowId>
+ 		</entry>
+ 		<entry>
+-			<start>280us</start>
+-			<queue>7</queue>
+-			<dest>00:00:00:00:00:04</dest>
+-			<size>800B</size>
+-			<flowId>18</flowId>
+-		</entry>
+-		<entry>
+ 			<start>285us</start>
+ 			<queue>7</queue>
+ 			<dest>00:00:00:00:00:04</dest>

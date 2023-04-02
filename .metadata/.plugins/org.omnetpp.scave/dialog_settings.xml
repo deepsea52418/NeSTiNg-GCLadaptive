@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<section name="org.omnetpp.scave.editors.ui.EditDialog">
+		<item key="DIALOG_X_ORIGIN" value="1032"/>
+		<item key="DIALOG_Y_ORIGIN" value="467"/>
+		<item key="DIALOG_WIDTH" value="1709"/>
+		<item key="DIALOG_HEIGHT" value="638"/>
+		<item key="DIALOG_FONT_NAME" value="1|Ubuntu|15.0|0|GTK|1|"/>
+	</section>
+</section>
