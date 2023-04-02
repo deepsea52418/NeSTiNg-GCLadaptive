@@ -99,10 +99,11 @@ void GateController::initialize(int stage) {
         
 
         cXMLElement* xml = par("initialSchedule").xmlValue();
+        // 初始化newSchedule
+        newSchedule = new Schedule<GateBitvector>();
+
         loadScheduleOrDefault(xml);
 
-        // 初始化newSchedule
-        //newSchedule = new Schedule<GateBitvector>();
 
         if (par("enableHoldAndRelease")) {
             //Schedule hold for the first entry if needed.
@@ -311,7 +312,8 @@ void GateController::loadScheduleOrDefault(cXMLElement* xml) {
                     << clock->getTime().inUnit(SIMTIME_US) << endl;
 
     nextSchedule = schedule;
-    //newSchedule = schedule;
+    newSchedule = schedule;
+    // 在这边，我们输出以下new和
 }
 
 // 设置门状态
