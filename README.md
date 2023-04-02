@@ -1,1 +1,3 @@
 # NeSTiNg-GCLadaptive
+
+这个项目主要是在NeSTiNg的基础上增加GCL自适应功能，目前代码还在开发过程中

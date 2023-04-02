@@ -18,8 +18,7 @@
 #include "nesting/application/ethernet/VlanEtherTrafGenSched.h"
 // 引入gatecontroller头文件
 #include "nesting/ieee8021q/queue/gating/GateController.h"
-// 在这边做个测试
-// 再试试
+//
 #include "inet/common/TimeTag_m.h"
 #include "inet/linklayer/common/Ieee802SapTag_m.h"
 #include "inet/linklayer/common/MacAddressTag_m.h"
