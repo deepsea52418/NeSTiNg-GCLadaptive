@@ -1,4 +1,4 @@
-22:21:03 **** Incremental Build of configuration release for project inet ****
+14:16:02 **** Incremental Build of configuration release for project inet ****
 make MODE=release -j4 all 
 cd src && make
 make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
@@ -37,287 +37,8 @@ clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed 
 Building...
 make[1]: Nothing to be done for 'all-pch'.
 make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:21:04 **** Incremental Build of configuration gcc-release for project nesting ****
+14:16:04 **** Incremental Build of configuration gcc-release for project nesting ****
 make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-nesting/ieee8021q/queue/gating/GateController.cc
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:30:
-In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
-../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
-    virtual void finish() override;
-                 ^
-/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
-    virtual void finish(cComponent *component, simsignal_t signalID) {}
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
-./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
-./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual void packetEnqueued(IPassiveQueue *queue);
-                 ^
-../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
-    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-./nesting/ieee8021q/queue/gating/GateController.h:93:11: warning: private field 'result_file_location' is not used [-Wunused-private-field]
-    cPar* result_file_location;
-          ^
-6 warnings generated.
-Creating shared library: ../out/clang-release/src/libnesting.so
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-cd simulations && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:21:10 **** Incremental Build of configuration release for project inet ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-*** COMPILING with:
-clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
-*** LINKING with:
-clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
-Building...
-make[1]: Nothing to be done for 'all-pch'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:21:12 **** Incremental Build of configuration gcc-release for project nesting ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-cd simulations && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:21:32 **** Incremental Build of configuration release for project inet ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-*** COMPILING with:
-clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
-*** LINKING with:
-clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
-Building...
-make[1]: Nothing to be done for 'all-pch'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:21:33 **** Incremental Build of configuration gcc-release for project nesting ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-cd simulations && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:35:14 **** Incremental Build of configuration release for project inet ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-*** COMPILING with:
-clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
-*** LINKING with:
-clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
-Building...
-make[1]: Nothing to be done for 'all-pch'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:35:15 **** Incremental Build of configuration gcc-release for project nesting ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-cd simulations && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:38:06 **** Incremental Build of configuration debug for project inet ****
-make MODE=debug -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-*** COMPILING with:
-clang++ -c -std=c++11 -g -Wall -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_debug.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
-*** LINKING with:
-clang++ -shared -fPIC -o ../out/clang-debug/src/libINET_dbg.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir_dbg -loppsim_dbg -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
-Building...
-inet/applications/base/ApplicationBase.cc
-inet/applications/base/ApplicationPacketSerializer.cc
-inet/applications/dhcp/DhcpClient.cc
-inet/applications/dhcp/DhcpServer.cc
-fatal error: file '/usr/include/pthread.h' has been modified since the precompiled header 'inet/common/precompiled_debug.h.pch' was built
-note: please rebuild precompiled header 'inet/common/precompiled_debug.h.pch'
-fatal error: file '/usr/include/pthread.h' has been modified since the precompiled header 'inet/common/precompiled_debug.h.pch' was built
-note: please rebuild precompiled header 'inet/common/precompiled_debug.h.pch'
-fatal error: file '/usr/include/pthread.h' has been modified since the precompiled header 'inet/common/precompiled_debug.h.pch' was built
-note: please rebuild precompiled header 'inet/common/precompiled_debug.h.pch'
-fatal error: file '/usr/include/pthread.h' has been modified since the precompiled header 'inet/common/precompiled_debug.h.pch' was built
-note: please rebuild precompiled header 'inet/common/precompiled_debug.h.pch'
-1 error generated.
-Makefile:1604: recipe for target '../out/clang-debug/src/inet/applications/base/ApplicationBase.o' failed
-make[1]: *** [../out/clang-debug/src/inet/applications/base/ApplicationBase.o] Error 1
-make[1]: *** Waiting for unfinished jobs....
-1 error generated.
-Makefile:1604: recipe for target '../out/clang-debug/src/inet/applications/base/ApplicationPacketSerializer.o' failed
-make[1]: *** [../out/clang-debug/src/inet/applications/base/ApplicationPacketSerializer.o] Error 1
-1 error generated.
-Makefile:1604: recipe for target '../out/clang-debug/src/inet/applications/dhcp/DhcpClient.o' failed
-make[1]: *** [../out/clang-debug/src/inet/applications/dhcp/DhcpClient.o] Error 1
-1 error generated.
-Makefile:1604: recipe for target '../out/clang-debug/src/inet/applications/dhcp/DhcpServer.o' failed
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-make[1]: *** [../out/clang-debug/src/inet/applications/dhcp/DhcpServer.o] Error 1
-Makefile:6: recipe for target 'all' failed
-make: *** [all] Error 2
-"make MODE=debug -j4 all" terminated with exit code 2. Build might be incomplete.
-22:38:08 **** Incremental Build of configuration gcc-debug for project nesting ****
-make MODE=debug -j4 all 
 cd src && make
 make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
 nesting/application/ethernet/VlanEtherTrafGenGCL.cc
@@ -353,25 +74,6 @@ In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
 ./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
     virtual bool isExpressQueue() = 0;
                  ^
-In file included from nesting/application/ethernet/VlanEtherTrafGenGCL.cc:16:
-In file included from ./nesting/application/ethernet/VlanEtherTrafGenGCL.h:22:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:30:
-In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
-../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
-    virtual void finish() override;
-                 ^
-/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
-    virtual void finish(cComponent *component, simsignal_t signalID) {}
-                 ^
-In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
-In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
-../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
-    virtual void finish() override;
-                 ^
-/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
-    virtual void finish(cComponent *component, simsignal_t signalID) {}
-                 ^
 In file included from nesting/ieee8021q/queue/TransmissionSelection.cc:16:
 In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
 In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
@@ -391,6 +93,22 @@ In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
     virtual bool isExpressQueue() = 0;
                  ^
 In file included from nesting/application/ethernet/VlanEtherTrafGenGCL.cc:16:
+In file included from ./nesting/application/ethernet/VlanEtherTrafGenGCL.h:22:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:30:
+In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
+../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
+    virtual void finish() override;
+                 ^
+/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
+    virtual void finish(cComponent *component, simsignal_t signalID) {}
+                 ^
+In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:30:
+In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
+../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
+    virtual void finish() override;
+                 ^
+/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.hIn file included from nesting/application/ethernet/VlanEtherTrafGenGCL.cc:16:
 In file included from ./nesting/application/ethernet/VlanEtherTrafGenGCL.h:22:
 In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
 In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
@@ -435,20 +153,36 @@ In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
 ../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
     virtual void packetEnqueued(IPassiveQueue *queue) = 0;
                  ^
-In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
-In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
+:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
+    virtual void finish(cComponent *component, simsignal_t signalID) {}
+                 ^
+In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
 In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual void packetEnqueued(IPassiveQueue *queue);
+In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
+In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
+In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
+./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
                  ^
-../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
-    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
                  ^
-In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
-In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
+In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
+In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
+In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
+In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
+./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
+In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
+In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
 ./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
     virtual bool isExpressQueue();
                  ^
@@ -457,27 +191,20 @@ In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/
                  ^
 In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
 In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
-./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
-./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:30:
-In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
 ../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
     virtual void finish() override;
                  ^
 /home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
     virtual void finish(cComponent *component, simsignal_t signalID) {}
+                 ^
+In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
+./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void packetEnqueued(IPassiveQueue *queue);
+                 ^
+../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
+    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
                  ^
 In file included from nesting/application/ethernet/VlanEtherTrafGenGCL.cc:18:
 ./nesting/application/ethernet/VlanEtherTrafGenSched.h:92:18: warning: 'nesting::VlanEtherTrafGenSched::sendDelayed' hides overloaded virtual functions [-Woverloaded-virtual]
@@ -498,74 +225,8 @@ nesting/application/ethernet/VlanEtherTrafGenGCL.cc:50:34: warning: unused varia
 nesting/application/ethernet/VlanEtherTrafGenGCL.cc:51:34: warning: unused variable 'nextSchedule' [-Wunused-variable]
         Schedule<GateBitvector>* nextSchedule = new Schedule<GateBitvector>();
                                  ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
-./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
-./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual void packetEnqueued(IPassiveQueue *queue);
-                 ^
-../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
-    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
-                 ^
-In file included from nesting/application/ethernet/VlanEtherTrafGenGCL.cc:16:
-./nesting/application/ethernet/VlanEtherTrafGenGCL.h:45:11: warning: private field 'result_file_location' is not used [-Wunused-private-field]
-    cPar* result_file_location;
-          ^
-5 warnings generated.
-nesting/ieee8021q/queue/gating/TransmissionGate.cc
-In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
-./nesting/ieee8021q/queue/gating/GateController.h:93:11: warning: private field 'result_file_location' is not used [-Wunused-private-field]
-    cPar* result_file_location;
-          ^
-5 warnings generated.
-nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc
-9 warnings generated.
-nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc
-6 warnings generated.
-nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.cc
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
-../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
-    virtual void finish() override;
-                 ^
-/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
-    virtual void finish(cComponent *component, simsignal_t signalID) {}
-                 ^
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
+In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
 In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
 In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
@@ -575,8 +236,8 @@ In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
 ../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
     virtual void packetEnqueued(IPassiveQueue *queue) = 0;
                  ^
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
+In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
 ./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
     virtual bool isExpressQueue();
@@ -584,27 +245,37 @@ In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/
 ./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
     virtual bool isExpressQueue() = 0;
                  ^
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
-./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
+In file included from ./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:25:
 ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
     virtual bool isExpressQueue();
                  ^
 ./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
     virtual bool isExpressQueue() = 0;
                  ^
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.h:21:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
-../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
+In file included from nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.cc:16:
+./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/gating/GateController.cc:16:
+./nesting/ieee8021q/queue/gating/GateController.h:93:11: warning: private field 'result_file_location' is not used [-Wunused-private-field]
+    cPar* result_file_location;
+          ^
+In file included from nesting/application/ethernet/VlanEtherTrafGenGCL.cc:16:
+./nesting/application/ethernet/VlanEtherTrafGenGCL.h:45:11: warning: private field 'result_file_location' is not used [-Wunused-private-field]
+    cPar* result_file_location;
+          ^
+5 warnings generated.
+nesting/ieee8021q/queue/gating/TransmissionGate.cc
+5 warnings generated.
+nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc
+9 warnings generated.
+nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc
+6 warnings generated.
+nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.cc
 In file included from nesting/ieee8021q/queue/gating/TransmissionGate.cc:16:
 In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:24:
 In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
@@ -614,11 +285,6 @@ In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.
 /home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
     virtual void finish(cComponent *component, simsignal_t signalID) {}
                  ^
-    virtual void finish() override;
-                 ^
-/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
-    virtual void finish(cComponent *component, simsignal_t signalID) {}
-                 ^
 In file included from nesting/ieee8021q/queue/gating/TransmissionGate.cc:16:
 In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
@@ -635,6 +301,79 @@ In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
                  ^
 ./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
     virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/gating/TransmissionGate.cc:16:
+In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
+./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void packetEnqueued(IPassiveQueue *queue);
+                 ^
+../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
+    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/gating/TransmissionGate.cc:16:
+./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
+../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
+    virtual void finish() override;
+                 ^
+/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
+    virtual void finish(cComponent *component, simsignal_t signalID) {}
+                 ^
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
+In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
+In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
+./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void packetEnqueued(IPassiveQueue *queue);
+                 ^
+../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
+    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
+./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
+./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/CreditBasedShaper.h:25:
+./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+5 warnings generated.
+nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.h:21:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
+../../inet/src/inet/linklayer/ethernet/EtherMacBase.h:208:18: warning: 'inet::EtherMacBase::finish' hides overloaded virtual function [-Woverloaded-virtual]
+    virtual void finish() override;
+                 ^
+/home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
+    virtual void finish(cComponent *component, simsignal_t signalID) {}
                  ^
 In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.cc:16:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:22:
@@ -644,22 +383,6 @@ In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/
 /home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
     virtual void finish(cComponent *component, simsignal_t signalID) {}
                  ^
-In file included from nesting/ieee8021q/queue/gating/TransmissionGate.cc:16:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
-In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
-./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual void packetEnqueued(IPassiveQueue *queue);
-                 ^
-../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
-    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
-                 ^
-In file included from nesting/ieee8021q/queue/gating/TransmissionGate.cc:16:
-./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
 In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc:16:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.h:21:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
@@ -689,14 +412,6 @@ In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/
 ./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
     virtual bool isExpressQueue() = 0;
                  ^
-In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc:16:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.h:21:
-./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
 In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.cc:16:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
 In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:30:
@@ -706,6 +421,14 @@ In file included from ./nesting/ieee8021q/queue/gating/GateController.h:32:
                  ^
 ../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
     virtual void packetEnqueued(IPassiveQueue *queue) = 0;
+                 ^
+In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.cc:16:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/StrictPriority.h:21:
+./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
                  ^
 In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.cc:16:
 In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:24:
@@ -731,10 +454,8 @@ In file included from nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TS
     virtual bool isExpressQueue() = 0;
                  ^
 5 warnings generated.
-nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc
 5 warnings generated.
 nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.cc
-5 warnings generated.
 5 warnings generated.
 In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:16:
 ./nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.h:34:18: warning: 'initialize' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
@@ -759,6 +480,44 @@ In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.
 /home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
     virtual void finish(cComponent *component, simsignal_t signalID) {}
                  ^
+In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
+In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
+In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
+In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
+In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
+./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
+In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
+In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
+In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
+./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
+In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
+In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
+./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual bool isExpressQueue();
+                 ^
+./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
+    virtual bool isExpressQueue() = 0;
+                 ^
+In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
+./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
+    virtual void packetEnqueued(IPassiveQueue *queue);
+                 ^
+../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
+    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
+                 ^
+7 warnings generated.
 In file included from nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.cc:16:
 In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:21:
 In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.h:22:
@@ -768,27 +527,6 @@ In file included from ../../inet/src/inet/linklayer/ethernet/EtherMacFullDuplex.
 /home/tsn3/omnetpp-5.6.1/include/omnetpp/clistener.h:118:18: note: hidden overloaded virtual function 'omnetpp::cIListener::finish' declared here: different number of parameters (2 vs 0)
     virtual void finish(cComponent *component, simsignal_t signalID) {}
                  ^
-In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
-In file included from ./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:25:
-./nesting/ieee8021q/queue/framePreemption/LengthAwareQueue.h:104:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
-./nesting/ieee8021q/queue/transmissionSelectionAlgorithms/TSAlgorithm.h:91:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
 In file included from nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.cc:16:
 In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
 In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
@@ -810,22 +548,6 @@ In file included from ./nesting/ieee8021q/queue/gating/TransmissionGate.h:29:
 ./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
     virtual bool isExpressQueue() = 0;
                  ^
-In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
-In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
-In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
-./nesting/ieee8021q/queue/gating/TransmissionGate.h:173:18: warning: 'isExpressQueue' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual bool isExpressQueue();
-                 ^
-./nesting/ieee8021q/queue/framePreemption/IPreemptableQueue.h:34:18: note: overridden virtual function is here
-    virtual bool isExpressQueue() = 0;
-                 ^
-In file included from nesting/linklayer/ethernet/EtherMacLegacySignalEmitter.cc:17:
-./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:100:18: warning: 'packetEnqueued' overrides a member function but is not marked 'override' [-Winconsistent-missing-override]
-    virtual void packetEnqueued(IPassiveQueue *queue);
-                 ^
-../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
-    virtual void packetEnqueued(IPassiveQueue *queue) = 0;
-                 ^
 In file included from nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.cc:16:
 In file included from ./nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.h:25:
 In file included from ./nesting/ieee8021q/queue/TransmissionSelection.h:23:
@@ -842,15 +564,17 @@ In file included from nesting/linklayer/framePreemption/EtherMACFullDuplexPreemp
 ../../inet/src/inet/common/queue/IPassiveQueue.h:91:18: note: overridden virtual function is here
     virtual void packetEnqueued(IPassiveQueue *queue) = 0;
                  ^
-7 warnings generated.
-5 warnings generated.
-Creating shared library: ../out/clang-debug/src/libnesting_dbg.so
+nesting/linklayer/framePreemption/EtherMACFullDuplexPreemptable.cc:282:17: warning: unused variable 'hdr' [-Wunused-variable]
+    const auto& hdr = frame->peekAtFront<EthernetMacHeader>();// note: we need to duplicate the frame because we emit a signal with it in endTxPeriod()
+                ^
+6 warnings generated.
+Creating shared library: ../out/clang-release/src/libnesting.so
 make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
 cd simulations && make
 make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
 make[1]: Nothing to be done for 'all'.
 make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:55:27 **** Incremental Build of configuration release for project inet ****
+14:16:15 **** Incremental Build of configuration release for project inet ****
 make MODE=release -j4 all 
 cd src && make
 make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
@@ -889,105 +613,7 @@ clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed 
 Building...
 make[1]: Nothing to be done for 'all-pch'.
 make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:55:28 **** Incremental Build of configuration gcc-release for project nesting ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-cd simulations && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:56:05 **** Incremental Build of configuration release for project inet ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-*** COMPILING with:
-clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
-*** LINKING with:
-clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
-Building...
-make[1]: Nothing to be done for 'all-pch'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:56:07 **** Incremental Build of configuration gcc-release for project nesting ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'
-cd simulations && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-make[1]: Nothing to be done for 'all'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/simulations'
-22:57:19 **** Incremental Build of configuration release for project inet ****
-make MODE=release -j4 all 
-cd src && make
-make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.wireless' in feature 'wirelesstutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.visualization' in feature 'visualizationtutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.configurator' in feature 'configuratortutorial' was not found.
-opp_featuretool: Error: NED package 'inet.tutorials.rip' in feature 'riptutorial' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.general' in feature 'generalshowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.visualizer' in feature 'visualizershowcases' was not found.
-opp_featuretool: Error: NED package 'inet.showcases.wireless' in feature 'wirelessshowcases' was not found.
-*** COMPILING with:
-clang++ -c -std=c++11 -O3 -DNDEBUG=1 -MMD -MP -MF .d  -fPIC  -Wno-deprecated-register -Wno-unused-function -fno-omit-frame-pointer -DHAVE_SWAPCONTEXT -DWITH_MPI -DXMLPARSER=libxml -DPREFER_QTENV -DWITH_QTENV -DWITH_PARSIM -DWITH_NETBUILDER -DWITH_OSG -DWITH_OSGEARTH -Wno-overloaded-virtual -include inet/common/precompiled_release.h  -DINET_EXPORT -I. -I/home/tsn3/omnetpp-5.6.1/include
-*** LINKING with:
-clang++ -shared -fPIC -o ../out/clang-release/src/libINET.so -Wl,--no-as-needed -Wl,--whole-archive  -Wl,--no-whole-archive -loppenvir -loppsim -ldl -lstdc++  -losg -losgText -losgDB -losgGA -losgViewer -losgUtil -lOpenThreads  -losgEarth -losgEarthUtil  -Wl,-rpath,/home/tsn3/omnetpp-5.6.1/lib -Wl,-rpath,/lib -Wl,-rpath,.  -L/home/tsn3/omnetpp-5.6.1/lib
-Building...
-make[1]: Nothing to be done for 'all-pch'.
-make[1]: Leaving directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/inet/src'
-22:57:20 **** Incremental Build of configuration gcc-release for project nesting ****
+14:16:16 **** Incremental Build of configuration gcc-release for project nesting ****
 make MODE=release -j4 all 
 cd src && make
 make[1]: Entering directory '/home/tsn3/omnetpp-5.6.1/workspacegcl/nesting/src'

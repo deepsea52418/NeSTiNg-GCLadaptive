@@ -62,7 +62,7 @@ private:
     Schedule<GateBitvector>* nextSchedule;
 
     // 创建一个newSchedule,保存当前调度方案，并用于更新GCL自适应
-    Schedule<GateBitvector>* newSchedule;
+    //Schedule<GateBitvector>* newSchedule;
 
     // /** Index for the current entry in the schedule. */
     // unsigned int scheduleIndex;

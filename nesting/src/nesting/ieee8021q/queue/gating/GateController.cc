@@ -29,9 +29,9 @@ GateController::~GateController() {
         delete nextSchedule;
     }
     // 析构newSchedule
-    if (newSchedule != nullptr) {
-        delete newSchedule;
-    }
+    // if (newSchedule != nullptr) {
+    //     delete newSchedule;
+    // }
 
     cancelEvent(&updateScheduleMsg);
 }
@@ -102,7 +102,7 @@ void GateController::initialize(int stage) {
         loadScheduleOrDefault(xml);
 
         // 初始化newSchedule
-        newSchedule = new Schedule<GateBitvector>();
+        //newSchedule = new Schedule<GateBitvector>();
 
         if (par("enableHoldAndRelease")) {
             //Schedule hold for the first entry if needed.
@@ -311,7 +311,7 @@ void GateController::loadScheduleOrDefault(cXMLElement* xml) {
                     << clock->getTime().inUnit(SIMTIME_US) << endl;
 
     nextSchedule = schedule;
-    newSchedule = schedule;
+    //newSchedule = schedule;
 }
 
 // 设置门状态
@@ -350,7 +350,7 @@ void GateController::updateSchedule()
         currentSchedule = nextSchedule;
         nextSchedule = nullptr;
         // newSchedule保存currentSchedule信息
-        newSchedule = currentSchedule;
+        //newSchedule = currentSchedule;
 
         // // 在每次更新GCL之后，用newSchedule保存currentSchedule的基本信息，如时隙大小等
         // simtime_t currentSchedule_cycle = currentSchedule->getCycleTime();
@@ -460,7 +460,8 @@ bool GateController::currentlyOnHold() {
 // 自写函数
 // 获取下一次加载的GCL信息
 Schedule<GateBitvector>* GateController::getnewSchedule(){
-    return this->newSchedule;
+    return this->currentSchedule;
+    //return this->newSchedule;
 }
 
 // 自写函数

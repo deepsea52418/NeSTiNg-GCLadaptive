@@ -7763,3 +7763,38 @@ java.lang.RuntimeException:
 java.lang.RuntimeException: 
 	at org.omnetpp.launch.SimulationLauncherJob.run(SimulationLauncherJob.java:153)
 	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+!SESSION 2023-04-02 14:09:50.199 -----------------------------------------------
+eclipse.buildId=5.6.1.200207-b15dab9895
+java.version=11.0.18
+java.vendor=Ubuntu
+BootLoader constants: OS=linux, ARCH=x86_64, WS=gtk, NL=en_US
+Command-line arguments:  -os linux -ws gtk -arch x86_64
+
+!ENTRY org.eclipse.core.resources 2 10035 2023-04-02 14:09:51.844
+!MESSAGE The workspace exited with unsaved changes in the previous session; refreshing workspace to recover changes.
+
+!ENTRY org.eclipse.ui 4 4 2023-04-02 14:09:55.080
+!MESSAGE Plug-in 'org.plugin.tsnsched' contributed an invalid Menu Extension (Path: 'org.plugin.toolbar.Menu' is invalid): org.plugin.toolbar.Action
+
+!ENTRY org.omnetpp.main 1 0 2023-04-02 14:09:56.025
+!MESSAGE OMNeT++ IDE 5.6.1.200207-b15dab9895 started.
+
+!ENTRY org.eclipse.ui.console 4 0 2023-04-02 14:11:07.236
+!MESSAGE Streams are already closed.
+
+!ENTRY org.omnetpp.launch 4 139 2023-04-02 14:11:07.240
+!MESSAGE Finished with Error
+!STACK 0
+java.lang.RuntimeException: 
+	at org.omnetpp.launch.SimulationLauncherJob.run(SimulationLauncherJob.java:153)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
+
+!ENTRY org.eclipse.ui.console 4 0 2023-04-02 14:14:12.924
+!MESSAGE Streams are already closed.
+
+!ENTRY org.omnetpp.launch 4 139 2023-04-02 14:14:12.928
+!MESSAGE Finished with Error
+!STACK 0
+java.lang.RuntimeException: 
+	at org.omnetpp.launch.SimulationLauncherJob.run(SimulationLauncherJob.java:153)
+	at org.eclipse.core.internal.jobs.Worker.run(Worker.java:63)
