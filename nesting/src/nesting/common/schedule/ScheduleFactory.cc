@@ -54,6 +54,20 @@ Schedule<GateBitvector>* ScheduleFactory::createGateBitvectorSchedule(cXMLElemen
 
     return schedule;
 }
+// 仿写一个深拷贝函数,实现两个GCL的复制
+Schedule<GateBitvector>* copySchedule(Schedule<GateBitvector>* schedule){
+    Schedule<GateBitvector>* newschedule = new Schedule<GateBitvector>();
+    newschedule->setBaseTime(schedule->getBaseTime());
+    newschedule->setCycleTime(schedule->getCycleTime());
+    newschedule->setCycleTimeExtension(schedule->getCycleTimeExtension());
+    // 遍历schedule的调度表，
+    for(int i=0;i<schedule->getControlListLength();i++){
+        newschedule->addControlListEntry(schedule->getTimeInterval(i),schedule->getScheduledObject(i));
+    }
+
+
+    return newschedule;
+}
 
 Schedule<GateBitvector>* ScheduleFactory::createGateSchedule(cXMLElement *xml)
 {

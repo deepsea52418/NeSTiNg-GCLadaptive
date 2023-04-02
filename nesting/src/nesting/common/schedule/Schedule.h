@@ -74,11 +74,7 @@ protected:
      */
     simtime_t sumTimeIntervals;
 public:
-    /**
-     * The control list contains tuples of time intervals and scheduled
-     * objects.
-     */
-    std::vector<ControlListEntry> controlList;
+
     virtual ~Schedule() {}
 
     Schedule()

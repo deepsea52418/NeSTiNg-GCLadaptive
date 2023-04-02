@@ -49,6 +49,10 @@ public:
     static Schedule<GateBitvector>* createDefaultBitvectorSchedule(cXMLElement *xml);
 
     static Schedule<SendDatagramEvent>* createDatagramSchedule(cXMLElement *xml);
+    
+    // 仿写一个深拷贝函数,实现两个GCL的复制
+    static Schedule<GateBitvector>* copySchedule(Schedule<GateBitvector>* schedule);
+
 private:
     static simtime_t getBaseTimeAttribute(cXMLElement* xml);
 
