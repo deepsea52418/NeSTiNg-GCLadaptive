@@ -83,8 +83,8 @@ y1, y2 = 0, 1050
 dy_1 = 50
 ax[0].set_yticks(np.arange(y1, y2, dy_1))
 ax[0].set_ylabel('end2end delay(us)', fontsize=18)
-y3, y4 = 0, 450
-dy_2 = 50
+y3, y4 = 0, 410
+dy_2 = 10
 ax[1].set_yticks(np.arange(y3, y4, dy_2))
 ax[1].set_ylabel('TT Interval(us)', fontsize=18)
 # 绘制曲线
