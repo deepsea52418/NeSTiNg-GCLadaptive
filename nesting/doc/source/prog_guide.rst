@@ -1,4 +1,0 @@
-Programmer's Guide
-==================
-
-TODO
