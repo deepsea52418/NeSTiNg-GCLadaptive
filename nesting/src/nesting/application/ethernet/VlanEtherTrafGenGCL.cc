@@ -131,27 +131,31 @@ namespace nesting {
             // 获取当前时隙大小
             simtime_t time_interval = newSchedule->getTimeInterval(currentscheduleIndex);
             simtime_t target_time_interval = time_interval;
+            // 设置调节步长
+            int upsteplength = 10;
+            int downsteplength = 10;
+            // 获取gatecontroller的isIncreased参数，判断当前的newSchedule的TT时隙有没有被增大，如果没有被增大，可以被变小
+            bool isIncreased = gateController->getisIncreased();
             // 根据报文延迟重新计算时隙大小
             // trunc()函数将截取浮点数的整数部
             // 设置触发调节上限为延迟>75us
-            // 设置步长
-            int steplength = 10;
             if (delay >= SimTime(25, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) + SimTime(2*steplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
+                gateController->setisIncreased(true);
+                if ((time_interval.trunc(SIMTIME_US) + SimTime(upsteplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
                     target_time_interval = schedule_cycle * 0.9;
                     EV_INFO<<"here 1    "<< target_time_interval << "currentscheduleIndex =  "<< currentscheduleIndex <<endl;
                 }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(2*steplength, SIMTIME_US);
+                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(upsteplength, SIMTIME_US);
                     EV_INFO<<"here 2    "<< target_time_interval <<  "currentscheduleIndex =  "<< currentscheduleIndex <<endl;
                 }
             }
             // 设置触发调节上限为延迟<45us
-            if (delay <= SimTime(10, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US)) <= (schedule_cycle * 0.1)){
+            if (delay <= SimTime(17, SIMTIME_US) && isIncreased == false ) {
+                if ((time_interval.trunc(SIMTIME_US) - SimTime(downsteplength, SIMTIME_US)) <= (schedule_cycle * 0.1)){
                     target_time_interval = schedule_cycle * 0.1;
                     EV_INFO<<"here 3    "<< target_time_interval << "currentscheduleIndex =  "<< currentscheduleIndex << endl;
                 }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US);
+                    target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(downsteplength, SIMTIME_US);
                     EV_INFO<<"here 4    "<< target_time_interval <<  "currentscheduleIndex =  "<< currentscheduleIndex <<endl;
                 }
             } 

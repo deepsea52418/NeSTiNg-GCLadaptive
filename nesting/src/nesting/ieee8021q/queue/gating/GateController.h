@@ -89,6 +89,10 @@ private:
     // 记录GCL更新情况
     cPar* result_file_location;
     fstream result_file;
+
+    // 做个测试，把这个成员放私有里面有没有问题
+    // 为了保障TT流的传输，在一个周期里，如果时隙被调整变大，就不能被调整变小，只有当所有TT流都要求时隙减小时才减小
+    bool isIncreased;
 protected:
     /** @see cSimpleModule::initialize(int) */
     virtual void initialize(int stage) override;
@@ -118,6 +122,9 @@ public:
     // 更新方式是vlanEtherTrafGenGCL读取newSchedule,进行自适应调节
     Schedule<GateBitvector>* newSchedule;
 
+    // // 为了保障TT流的传输，在一个周期里，如果时隙被调整变大，就不能被调整变小，只有当所有TT流都要求时隙减小时才减小
+    // bool isIncreased;
+
     virtual ~GateController();
 
     /** @see IClockListener::tick(IClock*) */
@@ -138,6 +145,12 @@ public:
 
     // 获取当前GCL的Index
     virtual unsigned int getscheduleIndex();
+
+    // 获取GCL的isIncreased
+    virtual bool getisIncreased();
+
+    // 设置GCL的isIncreased
+    virtual void setisIncreased(bool is_Increased);
 };
 
 } // namespace nesting

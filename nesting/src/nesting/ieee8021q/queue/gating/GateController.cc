@@ -96,11 +96,11 @@ void GateController::initialize(int stage) {
 
         lastChange = simTime();
 
+        // 初始化isIncreased
+        isIncreased = false;
 
         currentSchedule = new Schedule<GateBitvector>();
         currentSchedule->addControlListEntry(SimTime(1, SIMTIME_S), GateBitvector("11111111"));
-        
-
         cXMLElement* xml = par("initialSchedule").xmlValue();
         loadScheduleOrDefault(xml);
         if (par("enableHoldAndRelease")) {
@@ -346,6 +346,8 @@ void GateController::updateSchedule()
         delete currentSchedule;
         currentSchedule = ScheduleFactory::copySchedule(newSchedule);
         nextSchedule = newSchedule;
+        // 重置isIncreased
+        isIncreased = false;
         // 记录GCL更新情况
         this->result_file << "{ \"time\": "<<simTime() << ", \"cycletime\": \"" << currentSchedule->getCycleTime() << "\""\
             << ", \"TT-gcl\": \"" << currentSchedule->getScheduledObject(scheduleIndex)  << "\"" \
@@ -455,6 +457,16 @@ Schedule<GateBitvector>* GateController::getnewSchedule(){
 // 获取当前GCL的Index信息，由于当前的Index是执行的下一条GCL的序号，需要-1
 unsigned int GateController::getscheduleIndex(){
     return (this->scheduleIndex -1)% this->currentSchedule->getControlListLength();
+}
+// 自写函数
+// 获取当前GCL的isIncreased信息
+bool GateController::getisIncreased(){
+    return this->isIncreased;
+}
+// 自写函数
+// 设置当前GCL的isIncreased信息
+void GateController::setisIncreased(bool is_Increased){
+    this->isIncreased = is_Increased;
 }
 
 }
