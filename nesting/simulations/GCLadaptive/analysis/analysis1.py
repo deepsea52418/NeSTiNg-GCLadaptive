@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 打开文件
-with open('../single/test_14/results/roboticArm.txt', 'r') as file1:
+with open('../single/test_02/results/roboticArm.txt', 'r') as file1:
     lines_1 = file1.readlines()
-with open('../single/test_14/results/gateController.txt', 'r') as file2:
+with open('../single/test_02/results/gateController.txt', 'r') as file2:
     lines_2 = file2.readlines()[2:]  # 跳过前两行数据
 
 
@@ -24,7 +24,6 @@ for line in lines_1:
         delay_table.append(dict)
     else:
         interval_table.append(dict)
-print("interval_table length = ",len(interval_table))
 # 读取gateController
 for line in lines_2:
     line = line.strip('\n')
@@ -72,8 +71,8 @@ TT_max = max(TT_delay)
 BE_max = max(BE_delay)
 TT_min = min(TT_delay)
 BE_min = min(BE_delay)
-print("TT_avg: ", TT_avg, "ms    TT_std: " , TT_std, "ms    TT_max: ", TT_max, "ms    TT_min: ", TT_min,"ms")
-print("BE_avg: ", BE_avg, "ms    BE_std: " , BE_std, "ms    BE_max: ", BE_max, "ms    BE_min: ", BE_min,"ms")
+print("TT_avg: ", TT_avg, "us    TT_std: " , TT_std, "us    TT_max: ", TT_max, "us    TT_min: ", TT_min,"us")
+print("BE_avg: ", BE_avg, "us    BE_std: " , BE_std, "us    BE_max: ", BE_max, "us    BE_min: ", BE_min,"us")
 
 # 绘图设置
 # 画两张图
@@ -100,7 +99,7 @@ ax[1].set_ylabel('TT Interval(us)', fontsize=18)
 ax[0].plot(time1, TT_delay, color='g',marker='.', linewidth=1, label='TT End2end Delay')
 ax[0].plot(time2, BE_delay, color='r',marker='.',linewidth=1, label = "BE End2end Delay")
 ax[1].plot(time3, TT_interval, color='b',marker='.', linewidth=1, label='Switch TT Interval')
-ax[1].plot(time4, interval, color='y',marker='.', linewidth=1, label='GCL TT Interval')
+#ax[1].plot(time4, interval, color='y',marker='.', linewidth=1, label='GCL TT Interval')
 # 标签设置
 ax[0].legend(loc="upper right", fontsize=18)
 ax[1].legend(loc="upper right", fontsize=18)

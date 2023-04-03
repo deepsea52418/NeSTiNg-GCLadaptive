@@ -136,7 +136,7 @@ namespace nesting {
             // 设置触发调节上限为延迟>75us
             // 设置步长
             int steplength = 10;
-            if (delay >= SimTime(60, SIMTIME_US)) {
+            if (delay >= SimTime(25, SIMTIME_US)) {
                 if ((time_interval.trunc(SIMTIME_US) + SimTime(2*steplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
                     target_time_interval = schedule_cycle * 0.9;
                     EV_INFO<<"here 1    "<< target_time_interval << "currentscheduleIndex =  "<< currentscheduleIndex <<endl;
@@ -146,7 +146,7 @@ namespace nesting {
                 }
             }
             // 设置触发调节上限为延迟<45us
-            if (delay <= SimTime(30, SIMTIME_US)) {
+            if (delay <= SimTime(10, SIMTIME_US)) {
                 if ((time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US)) <= (schedule_cycle * 0.1)){
                     target_time_interval = schedule_cycle * 0.1;
                     EV_INFO<<"here 3    "<< target_time_interval << "currentscheduleIndex =  "<< currentscheduleIndex << endl;

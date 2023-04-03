@@ -7,7 +7,7 @@
 			<start>0us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>900B</size>
+			<size>800B</size>
 			<flowId>1</flowId>
 		</entry>
 		<entry>
@@ -18,34 +18,31 @@
 			<flowId>2</flowId>
 		</entry>
 		<entry>
-			<start>15us</start>
+			<start>16us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
 			<size>800B</size>
 			<flowId>3</flowId>
 		</entry>
 		<entry>
-			<start>22us</start>
+			<start>24us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>500B</size>
+			<size>800B</size>
 			<flowId>4</flowId>
 		</entry>
 		<entry>
-			<start>27us</start>
+			<start>32us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>200B</size>
+			<size>800B</size>
 			<flowId>5</flowId>
 		</entry>
-	</host>
-	<host name="robotController2">
-		<cycle>400us</cycle>
 		<entry>
 			<start>40us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>900B</size>
+			<size>800B</size>
 			<flowId>6</flowId>
 		</entry>
 		<entry>
@@ -56,24 +53,97 @@
 			<flowId>7</flowId>
 		</entry>
 		<entry>
-			<start>55us</start>
+			<start>56us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
 			<size>800B</size>
 			<flowId>8</flowId>
 		</entry>
 		<entry>
-			<start>62us</start>
+			<start>64us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>500B</size>
+			<size>800B</size>
 			<flowId>9</flowId>
 		</entry>
 		<entry>
-			<start>67us</start>
+			<start>72us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>200B</size>
+			<size>800B</size>
+			<flowId>10</flowId>
+		</entry>
+	</host>
+	<host name="robotController2">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+		<entry>
+			<start>16us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>3</flowId>
+		</entry>
+		<entry>
+			<start>24us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>4</flowId>
+		</entry>
+		<entry>
+			<start>32us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>5</flowId>
+		</entry>
+		<entry>
+			<start>40us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>6</flowId>
+		</entry>
+		<entry>
+			<start>48us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>7</flowId>
+		</entry>
+		<entry>
+			<start>56us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>8</flowId>
+		</entry>
+		<entry>
+			<start>64us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
+			<flowId>9</flowId>
+		</entry>
+		<entry>
+			<start>72us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>800B</size>
 			<flowId>10</flowId>
 		</entry>
 	</host>
@@ -81,11 +151,11 @@
 		<port id="3">
 			<schedule cycleTime="400us">
 				<entry>
-					<length>40us</length>
+					<length>100us</length>
 					<bitvector>10000000</bitvector>
 				</entry>
 				<entry>
-					<length>360us</length>
+					<length>300us</length>
 					<bitvector>01111111</bitvector>
 				</entry>
 			</schedule>
