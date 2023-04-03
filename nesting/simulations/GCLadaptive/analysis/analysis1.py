@@ -24,6 +24,7 @@ for line in lines_1:
         delay_table.append(dict)
     else:
         interval_table.append(dict)
+print("interval_table length = ",len(interval_table))
 # 读取gateController
 for line in lines_2:
     line = line.strip('\n')
@@ -40,18 +41,26 @@ TT_delay = []
 BE_delay = []
 for item in delay_table:
     if item['pcp'] == 7:
-        time1.append(item['time'] * 1000000) # 转化为以微秒为单位
-        TT_delay.append(item['e2edelay'] * 1000000) # 转化为以微秒为单位
+        time1.append(item['time'] * 1000) # ms
+        TT_delay.append(item['e2edelay'] * 1000000) # us
     else:
-        time2.append(item['time'] * 1000000)
+        time2.append(item['time'] * 1000)
         BE_delay.append(item['e2edelay'] * 1000000)
 
 # 读取GCL
 # 交换机时隙大小：TT_interval
 TT_interval = []
 for item in gateController_table:
-    time3.append(item['time'] * 1000000)
+    time3.append(item['time'] * 1000)
     TT_interval.append(item['TT-interval'] * 1000000) # 转化为以us为单位
+
+# 读取RobotArm文件中的时隙大小
+time4 = []
+interval = []
+for item in interval_table:
+    time4.append(item['time'] * 1000) # ms
+    interval.append(item['pcp=7-interval'] * 1000000)
+
 
 
 # 计算延迟平均值，标准差，最大值，最小值
@@ -76,8 +85,8 @@ ax[1].grid(axis="y", which='both',linestyle=':')
 ax[0].set_title("Traffic Delay", fontsize=18)
 ax[1].set_title("TT Interval", fontsize=18)
 # x轴设置
-ax[0].set_xlabel('time (ms)', fontsize=18)
-ax[1].set_xlabel('time (ms)', fontsize=18)
+ax[0].set_xlabel('time (us)', fontsize=18)
+ax[1].set_xlabel('time (us)', fontsize=18)
 # y轴设置 从0~1，每各0.05一个刻度
 y1, y2 = 0, 1050
 dy_1 = 50
@@ -91,6 +100,7 @@ ax[1].set_ylabel('TT Interval(us)', fontsize=18)
 ax[0].plot(time1, TT_delay, color='g',marker='.', linewidth=1, label='TT End2end Delay')
 ax[0].plot(time2, BE_delay, color='r',marker='.',linewidth=1, label = "BE End2end Delay")
 ax[1].plot(time3, TT_interval, color='b',marker='.', linewidth=1, label='Switch TT Interval')
+ax[1].plot(time4, interval, color='y',marker='.', linewidth=1, label='GCL TT Interval')
 # 标签设置
 ax[0].legend(loc="upper right", fontsize=18)
 ax[1].legend(loc="upper right", fontsize=18)

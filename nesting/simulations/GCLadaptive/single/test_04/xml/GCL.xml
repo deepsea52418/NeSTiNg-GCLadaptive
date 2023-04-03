@@ -7,35 +7,35 @@
 			<start>0us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>400B</size>
+			<size>900B</size>
 			<flowId>1</flowId>
 		</entry>
 		<entry>
-			<start>5us</start>
+			<start>8us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>600B</size>
+			<size>800B</size>
 			<flowId>2</flowId>
 		</entry>
 		<entry>
-			<start>10us</start>
+			<start>15us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
 			<size>800B</size>
 			<flowId>3</flowId>
 		</entry>
 		<entry>
-			<start>17us</start>
+			<start>22us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>900B</size>
+			<size>500B</size>
 			<flowId>4</flowId>
 		</entry>
 		<entry>
-			<start>25us</start>
+			<start>27us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>400B</size>
+			<size>200B</size>
 			<flowId>5</flowId>
 		</entry>
 	</host>
@@ -45,40 +45,47 @@
 			<start>40us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>400B</size>
-			<flowId>1</flowId>
+			<size>900B</size>
+			<flowId>6</flowId>
 		</entry>
 		<entry>
-			<start>44us</start>
+			<start>48us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
 			<size>800B</size>
-			<flowId>1</flowId>
+			<flowId>7</flowId>
 		</entry>
 		<entry>
-			<start>50us</start>
+			<start>55us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>400B</size>
-			<flowId>1</flowId>
+			<size>800B</size>
+			<flowId>8</flowId>
 		</entry>
 		<entry>
-			<start>54us</start>
+			<start>62us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:04</dest>
-			<size>400B</size>
-			<flowId>1</flowId>
+			<size>500B</size>
+			<flowId>9</flowId>
+		</entry>
+		<entry>
+			<start>67us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:04</dest>
+			<size>200B</size>
+			<flowId>10</flowId>
 		</entry>
 	</host>
 	<switch name="switchA">
 		<port id="3">
 			<schedule cycleTime="400us">
 				<entry>
-					<length>40us</length>
+					<length>80us</length>
 					<bitvector>10000000</bitvector>
 				</entry>
 				<entry>
-					<length>360us</length>
+					<length>320us</length>
 					<bitvector>01111111</bitvector>
 				</entry>
 			</schedule>

@@ -35,9 +35,8 @@ network GCLadaptive
         robotController2: VlanEtherHostSched {
             @display("p=567.84,576.576");
         }
-        roboticArm: VlanEtherHostQGCL {
+        roboticArm: VlanEtherHostQ {
             @display("p=752,316");
-            trafGenAppGCL.gateControllerModule = "^.^.switchA.eth[3].queue.gateController";
         }
     connections:
         robotController1.ethg <--> C <--> switchA.ethg[0];

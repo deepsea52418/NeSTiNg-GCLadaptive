@@ -31,4 +31,5 @@
 *.out
 *.app
 /home/tsn3/omnetpp-5.6.1/workspacegcl/.metadata
-.metadata
+.metadata/
+**/results

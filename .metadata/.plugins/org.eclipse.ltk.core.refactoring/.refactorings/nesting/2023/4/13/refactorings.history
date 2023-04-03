@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<session version="1.0">
-<refactoring comment="Rename resource &apos;nesting/simulations/GCLadaptive/single/test_12&apos; to &apos;test_11&apos;" description="Rename resource &apos;test_12&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="simulations/GCLadaptive/single/test_12" name="test_11" stamp="1680318865219" updateReferences="true"/>
-</session>

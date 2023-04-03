@@ -21,7 +21,7 @@ network GCLadaptive
             parameters:
                 @display("p=372,315;is=vl");
             gates:
-                ethg[4];
+                ethg[5];
         }
         workstation1: VlanEtherHostQ {
             @display("p=109,316");
@@ -29,17 +29,21 @@ network GCLadaptive
         workstation2: VlanEtherHostQ {
             @display("p=372,68");
         }
-        robotController: VlanEtherHostSched {
-            @display("p=372,564");
+        robotController1: VlanEtherHostSched {
+            @display("p=180.544,576.576");
+        }
+        robotController2: VlanEtherHostSched {
+            @display("p=567.84,576.576");
         }
         roboticArm: VlanEtherHostQGCL {
             @display("p=752,316");
             trafGenAppGCL.gateControllerModule = "^.^.switchA.eth[3].queue.gateController";
         }
     connections:
-        robotController.ethg <--> C <--> switchA.ethg[0];
+        robotController1.ethg <--> C <--> switchA.ethg[0];
         workstation1.ethg <--> C <--> switchA.ethg[1];
         workstation2.ethg <--> C <--> switchA.ethg[2];
         roboticArm.ethg <--> C <--> switchA.ethg[3];
+        robotController2.ethg <--> C <--> switchA.ethg[4];
 
 }

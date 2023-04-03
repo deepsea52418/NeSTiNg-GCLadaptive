@@ -81,11 +81,11 @@
 		<port id="0">
 			<schedule cycleTime="400us">
 				<entry>
-					<length>40us</length>
+					<length>80us</length>
 					<bitvector>10000000</bitvector>
 				</entry>
 				<entry>
-					<length>360us</length>
+					<length>320us</length>
 					<bitvector>01111111</bitvector>
 				</entry>
 			</schedule>

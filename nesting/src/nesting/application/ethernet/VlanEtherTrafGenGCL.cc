@@ -135,18 +135,18 @@ namespace nesting {
             // trunc()函数将截取浮点数的整数部
             // 设置触发调节上限为延迟>75us
             // 设置步长
-            int steplength = 5;
-            if (delay >= SimTime(75, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) + SimTime(steplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
+            int steplength = 10;
+            if (delay >= SimTime(60, SIMTIME_US)) {
+                if ((time_interval.trunc(SIMTIME_US) + SimTime(2*steplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
                     target_time_interval = schedule_cycle * 0.9;
                     EV_INFO<<"here 1    "<< target_time_interval << "currentscheduleIndex =  "<< currentscheduleIndex <<endl;
                 }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(steplength, SIMTIME_US);
+                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(2*steplength, SIMTIME_US);
                     EV_INFO<<"here 2    "<< target_time_interval <<  "currentscheduleIndex =  "<< currentscheduleIndex <<endl;
                 }
             }
             // 设置触发调节上限为延迟<45us
-            if (delay <= SimTime(45, SIMTIME_US)) {
+            if (delay <= SimTime(30, SIMTIME_US)) {
                 if ((time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US)) <= (schedule_cycle * 0.1)){
                     target_time_interval = schedule_cycle * 0.1;
                     EV_INFO<<"here 3    "<< target_time_interval << "currentscheduleIndex =  "<< currentscheduleIndex << endl;
