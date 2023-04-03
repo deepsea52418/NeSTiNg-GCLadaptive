@@ -103,9 +103,7 @@ namespace nesting {
 
     void VlanEtherTrafGenGCL2::receivePacket(Packet *msg)
     {
-        // 对其父类EtherTrafGen的receivePacket()函数进行重新，并修改其父类，使其可以动态链接
-
-        // 计算报文延迟，这段代码参考的其他函数写的
+        // 计算报文延迟
         auto data = msg->peekData();  // 获取msg中所有数据
         auto regions = data->getAllTags<CreationTimeTag>(); // 获取数据包的创建时间
         // SimTime是omnet中定义是时间型数据类型
@@ -161,36 +159,55 @@ namespace nesting {
 
         // 判断当前报文是否是TT流，若不是TT流，则不进行调节
         if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 ){
-           // 获取gatecontroller中的newSchedule对象
+            // 获取gatecontroller中的newSchedule对象
             newSchedule = gateController ->getnewSchedule();
+            // 获取循环时间
             simtime_t schedule_cycle = newSchedule->getCycleTime();
             // 获取当前Index
             unsigned int currentscheduleIndex = gateController->getscheduleIndex();
             // 获取下一个Index
             unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
-            // 获取当前时隙大小
+            // 获取下次执行的GCL时隙大小
             simtime_t time_interval = newSchedule->getTimeInterval(currentscheduleIndex);
+            // 获取正在执行的GCL时隙大小
+            simtime_t current_interval = gateController->getCurrentScheduleInterval(currentscheduleIndex);
+            // 计算目标调节时隙大小
             simtime_t target_time_interval = time_interval;
-            // 根据报文延迟重新计算时隙大小
-            // trunc()函数将截取浮点数的整数部
-            // 设置触发调节上限为延迟>75us
-            // 设置步长
-            int steplength = 5;
-            if (delay >= SimTime(75, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) + SimTime(steplength, SIMTIME_US)) >= (schedule_cycle * 0.9)){
+            // 设置单流量调节步长 单位us
+            int increasesteplength = 5;
+            int decreasesteplength = 5;
+            // 设置单次GCL更新最大增大步长和最大减小步长 单位us
+            int maxIncreasesteplength = 20;
+            int maxDecreasesteplength = 20;
+            // 设置触发调节的上限和下限 单位us
+            int upperLimitTime = 25;
+            int lowerLimitTime = 10;
+            // 获取gatecontroller的isIncreased参数，判断当前的newSchedule的TT时隙有没有被增大，如果没有被增大，可以被变小,目的是宁可浪费带宽也要保障TT流传输
+            bool isIncreased = gateController->getisIncreased();
+            
+            // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
+            if (delay >= SimTime(upperLimitTime, SIMTIME_US)) {
+                gateController->setisIncreased(true);
+                target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(increasesteplength, SIMTIME_US);
+                if( target_time_interval >= schedule_cycle * 0.9){
+                    // 两端预留10%
                     target_time_interval = schedule_cycle * 0.9;
-                }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(steplength, SIMTIME_US);
+                }else if((target_time_interval - current_interval >= SimTime(maxIncreasesteplength, SIMTIME_US)) || \
+                         (current_interval - target_time_interval >= SimTime(maxIncreasesteplength, SIMTIME_US))) {
+                    target_time_interval = current_interval + SimTime(maxIncreasesteplength, SIMTIME_US);
                 }
             }
-            // 设置触发调节上限为延迟<45us
-            if (delay <= SimTime(45, SIMTIME_US)) {
-                if ((time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US)) <= (schedule_cycle * 0.1)){
+            if (delay <= SimTime(lowerLimitTime, SIMTIME_US) && isIncreased == false ) {
+                target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(decreasesteplength, SIMTIME_US);
+                if( target_time_interval <= schedule_cycle * 0.1){
+                    // 两端预留10%
                     target_time_interval = schedule_cycle * 0.1;
-                }else {
-                    target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(steplength, SIMTIME_US);
+                }else if((target_time_interval - current_interval >= SimTime(maxDecreasesteplength, SIMTIME_US)) || \
+                         (current_interval - target_time_interval >= SimTime(maxDecreasesteplength, SIMTIME_US))) {
+                    target_time_interval = current_interval - SimTime(maxDecreasesteplength, SIMTIME_US); 
                 }
             } 
+
             // 更新GCL
             newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
             newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));

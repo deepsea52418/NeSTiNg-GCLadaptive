@@ -328,7 +328,6 @@ void GateController::updateSchedule()
     // scheduleIndex==0时表示一个GCL刚执行完或者还没有开始执行
     // 若没有nextSchedule，则会一直执行当前的GCL
     if (scheduleIndex == 0 && nextSchedule) {
-
         // Print warning if the feature is used in combination with frame preemption
         // enableHoldAndRelease和抢占无法同时启用（enableHoldAndRelease就已经保留了资源，可以不用抢占）
         if(preemptMacModule != nullptr) {
@@ -342,8 +341,10 @@ void GateController::updateSchedule()
         // delete currentSchedule;
         // currentSchedule = nextSchedule;
         // nextSchedule = nullptr;
-        // 删除旧的空间
+        
+        // 删除旧的GCL申请的空间
         delete currentSchedule;
+        // 用vlanEtherTrafGenGCL更新的newSchedule更新GCL
         currentSchedule = ScheduleFactory::copySchedule(newSchedule);
         nextSchedule = newSchedule;
         // 重置isIncreased
@@ -467,6 +468,12 @@ bool GateController::getisIncreased(){
 // 设置当前GCL的isIncreased信息
 void GateController::setisIncreased(bool is_Increased){
     this->isIncreased = is_Increased;
+}
+
+// 自写函数
+// 获取当前GCL
+simtime_t GateController::getCurrentScheduleInterval(int scheduleIndex){
+    return this->currentSchedule->getTimeInterval(scheduleIndex);
 }
 
 }

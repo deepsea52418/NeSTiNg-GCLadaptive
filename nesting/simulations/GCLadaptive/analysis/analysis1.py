@@ -99,7 +99,7 @@ ax[1].set_ylabel('TT Interval(us)', fontsize=18)
 ax[0].plot(time1, TT_delay, color='g',marker='.', linewidth=1, label='TT End2end Delay')
 ax[0].plot(time2, BE_delay, color='r',marker='.',linewidth=1, label = "BE End2end Delay")
 ax[1].plot(time3, TT_interval, color='b',marker='.', linewidth=1, label='Switch TT Interval')
-ax[1].plot(time4, interval, color='y',marker='.', linewidth=1, label='GCL TT Interval')
+#ax[1].plot(time4, interval, color='y',marker='.', linewidth=1, label='GCL TT Interval')
 # 标签设置
 ax[0].legend(loc="upper right", fontsize=18)
 ax[1].legend(loc="upper right", fontsize=18)

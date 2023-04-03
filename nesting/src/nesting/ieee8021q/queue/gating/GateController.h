@@ -52,7 +52,7 @@ namespace nesting {
  */
 class GateController: public cSimpleModule, public IClockListener {
 private:
-    /** Current schedule. Is never null. */
+    // /** Current schedule. Is never null. */
     Schedule<GateBitvector>* currentSchedule;
 
     /**
@@ -62,7 +62,7 @@ private:
     Schedule<GateBitvector>* nextSchedule;
 
     // /** Index for the current entry in the schedule. */
-    // unsigned int scheduleIndex;
+    unsigned int scheduleIndex;
 
     /**
      * Clock reference, needed to get the current time and subscribe
@@ -90,7 +90,6 @@ private:
     cPar* result_file_location;
     fstream result_file;
 
-    // 做个测试，把这个成员放私有里面有没有问题
     // 为了保障TT流的传输，在一个周期里，如果时隙被调整变大，就不能被调整变小，只有当所有TT流都要求时隙减小时才减小
     bool isIncreased;
 protected:
@@ -114,16 +113,13 @@ protected:
     virtual void updateSchedule();
 
 public:
-    // 为了传参，把这个参数从私有转到公有
-    /** Index for the current entry in the schedule. */
-    unsigned int scheduleIndex;
-
     // 创建一个newSchedule,保存当前调度方案，并用于更新GCL自适应
     // 更新方式是vlanEtherTrafGenGCL读取newSchedule,进行自适应调节
     Schedule<GateBitvector>* newSchedule;
 
-    // // 为了保障TT流的传输，在一个周期里，如果时隙被调整变大，就不能被调整变小，只有当所有TT流都要求时隙减小时才减小
-    // bool isIncreased;
+    // 为了让其他程序读取currentSchedule,将其属性从private改为public
+    // Schedule<GateBitvector>* currentSchedule;
+
 
     virtual ~GateController();
 
@@ -140,7 +136,7 @@ public:
 
     virtual bool currentlyOnHold();
     
-    // 获取当前门控调度
+    // 获取当前门控调度,GCL自适应更新这个
     virtual Schedule<GateBitvector>* getnewSchedule();
 
     // 获取当前GCL的Index
@@ -151,6 +147,9 @@ public:
 
     // 设置GCL的isIncreased
     virtual void setisIncreased(bool is_Increased);
+
+    // 获取currentSchedule的时隙
+    virtual simtime_t getCurrentScheduleInterval(int scheduleIndex);
 };
 
 } // namespace nesting
