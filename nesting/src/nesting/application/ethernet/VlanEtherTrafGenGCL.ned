@@ -34,4 +34,11 @@ simple VlanEtherTrafGenGCL extends EtherTrafGen
         bool verbose = default(false);
         string gateControllerModule = default(""); // Path to the gate controller module
         string result_file_location = default("VlanEtherTrafGenGCL-result"); // 默认的结果文件
+        
+        double increasesteplength @unit(s) = default(-1s);   // 设置单流量调节步长 单位us
+        double decreasesteplength @unit(s) = default(-1s);   // 设置单流量调节步长 单位us
+        double maxIncreasesteplength @unit(s) = default(-1s);    // 设置单次GCL更新最大增大步长 单位us
+        double maxDecreasesteplength @unit(s) = default(-1s);    // 设置单次GCL更新最大减小步长
+        double upperLimitTime @unit(s) = default(-1s);    // 设置触发调节的上限 单位us
+        double lowerLimitTime @unit(s) = default(-1s);    // 设置触发调节的下限 单位us
 }
