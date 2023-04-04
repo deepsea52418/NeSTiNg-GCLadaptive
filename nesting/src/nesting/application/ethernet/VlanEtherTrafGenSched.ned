@@ -29,6 +29,10 @@ simple VlanEtherTrafGenSched
         // 添加startTime，控制终端开始发包时间 
         double startTime @unit(s) = default(0s);    // time of sending the first packet
         //
+        // 添加stopTime，控制终端结束发包时间 
+        double stopTime @unit(s) = default(-1s);    // 默认-1，表示永远发送
+        //
+
         @signal[sentPk](type=inet::Packet);
         @signal[rcvdPk](type=inet::Packet);
         @signal[sentPkTreeId](type=long);

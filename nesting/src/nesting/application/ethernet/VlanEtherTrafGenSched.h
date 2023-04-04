@@ -73,6 +73,9 @@ protected:
     // 添加startTime，控制开始发包时间
     simtime_t startTime;
     //
+    // 添加stopTime，控制结束发包时间
+    simtime_t stopTime;
+    //
 
     /**
      * Keeps track of scheduled send events with their respective schedule index
