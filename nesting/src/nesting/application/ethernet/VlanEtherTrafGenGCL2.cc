@@ -43,6 +43,33 @@ namespace nesting {
             gateController_b = getModuleFromPar<GateController>(par("gateControllerModule_b"), this);
             string filename = (&par("result_file_location"))->stringValue() ;
             this->result_file.open(filename, ios::out | ios::trunc);
+
+             // 初始化GCL自适应控制参数
+            increasesteplength = par("increasesteplength");
+            decreasesteplength = par("decreasesteplength");
+            maxIncreasesteplength = par("maxIncreasesteplength");
+            maxDecreasesteplength = par("maxDecreasesteplength");
+            upperLimitTime = par("upperLimitTime");
+            lowerLimitTime = par("lowerLimitTime");
+            if (increasesteplength <= SIMTIME_ZERO || decreasesteplength <= SIMTIME_ZERO ){
+                throw cRuntimeError("Invalid increasesteplength/decreasesteplength parameters");
+            }
+            if (maxIncreasesteplength <= SIMTIME_ZERO || maxDecreasesteplength <= SIMTIME_ZERO ){
+                throw cRuntimeError("Invalid maxIncreasesteplength/maxDecreasesteplength parameters");
+            }
+            if (upperLimitTime <= SIMTIME_ZERO || lowerLimitTime <= SIMTIME_ZERO ){
+                throw cRuntimeError("Invalid upperLimitTime/lowerLimitTime parameters");
+            }
+            if (upperLimitTime < lowerLimitTime){
+                throw cRuntimeError("Invalid parameters! upperLimitTime < lowerLimitTime parameters");
+            }
+            EV_INFO << "increasesteplength = " << increasesteplength <<"us"<<endl;
+            EV_INFO << "decreasesteplength = " << decreasesteplength <<"us"<<endl;
+            EV_INFO << "maxIncreasesteplength = " << maxIncreasesteplength <<"us"<<endl;
+            EV_INFO << "maxDecreasesteplength = " << maxDecreasesteplength <<"us"<<endl;
+            EV_INFO << "upperLimitTime = " << upperLimitTime <<"us"<<endl;
+            EV_INFO << "lowerLimitTime = " << lowerLimitTime <<"us"<<endl;
+            //
         } else if (stage == INITSTAGE_LINK_LAYER) {
             registerService(*VlanEtherTrafGenSched::L2_PROTOCOL, nullptr, gate("in"));
             registerProtocol(*VlanEtherTrafGenSched::L2_PROTOCOL, gate("out"), nullptr);
@@ -173,38 +200,29 @@ namespace nesting {
             simtime_t current_interval = gateController->getCurrentScheduleInterval(currentscheduleIndex);
             // 计算目标调节时隙大小
             simtime_t target_time_interval = time_interval;
-            // 设置单流量调节步长 单位us
-            int increasesteplength = 5;
-            int decreasesteplength = 5;
-            // 设置单次GCL更新最大增大步长和最大减小步长 单位us
-            int maxIncreasesteplength = 20;
-            int maxDecreasesteplength = 20;
-            // 设置触发调节的上限和下限 单位us
-            int upperLimitTime = 25;
-            int lowerLimitTime = 10;
             // 获取gatecontroller的isIncreased参数，判断当前的newSchedule的TT时隙有没有被增大，如果没有被增大，可以被变小,目的是宁可浪费带宽也要保障TT流传输
             bool isIncreased = gateController->getisIncreased();
             
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
-            if (delay >= SimTime(upperLimitTime, SIMTIME_US)) {
+            if (delay >= upperLimitTime) {
                 gateController->setisIncreased(true);
-                target_time_interval = time_interval.trunc(SIMTIME_US) + SimTime(increasesteplength, SIMTIME_US);
+                target_time_interval = time_interval.trunc(SIMTIME_US) + increasesteplength;
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.9;
-                }else if((target_time_interval - current_interval >= SimTime(maxIncreasesteplength, SIMTIME_US)) || \
-                         (current_interval - target_time_interval >= SimTime(maxIncreasesteplength, SIMTIME_US))) {
-                    target_time_interval = current_interval + SimTime(maxIncreasesteplength, SIMTIME_US);
+                }else if((target_time_interval - current_interval >= maxIncreasesteplength) || \
+                         (current_interval - target_time_interval >= maxIncreasesteplength)) {
+                    target_time_interval = current_interval + maxIncreasesteplength;
                 }
             }
-            if (delay <= SimTime(lowerLimitTime, SIMTIME_US) && isIncreased == false ) {
-                target_time_interval = time_interval.trunc(SIMTIME_US) - SimTime(decreasesteplength, SIMTIME_US);
+            if (delay <= lowerLimitTime && isIncreased == false ) {
+                target_time_interval = time_interval.trunc(SIMTIME_US) - decreasesteplength;
                 if( target_time_interval <= schedule_cycle * 0.1){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.1;
-                }else if((target_time_interval - current_interval >= SimTime(maxDecreasesteplength, SIMTIME_US)) || \
-                         (current_interval - target_time_interval >= SimTime(maxDecreasesteplength, SIMTIME_US))) {
-                    target_time_interval = current_interval - SimTime(maxDecreasesteplength, SIMTIME_US); 
+                }else if((target_time_interval - current_interval >= maxDecreasesteplength) || \
+                         (current_interval - target_time_interval >= maxDecreasesteplength)) {
+                    target_time_interval = current_interval - maxDecreasesteplength; 
                 }
             } 
 

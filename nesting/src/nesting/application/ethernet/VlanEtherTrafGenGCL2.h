@@ -44,6 +44,15 @@ private:
     cPar* vid;
     cPar* result_file_location;
 
+    // GCL自适应参数
+    simtime_t increasesteplength;
+    simtime_t decreasesteplength;
+    simtime_t maxIncreasesteplength;
+    simtime_t maxDecreasesteplength;
+    simtime_t upperLimitTime;
+    simtime_t lowerLimitTime;
+
+    
     // 调度表存储GCL信息
     // 获取gateController中的newSchedule对象
     Schedule<GateBitvector>* newSchedule;

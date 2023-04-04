@@ -186,7 +186,6 @@ namespace nesting {
                     target_time_interval = current_interval - maxDecreasesteplength; 
                 }
             } 
-
             // 更新GCL
             newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
             newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
