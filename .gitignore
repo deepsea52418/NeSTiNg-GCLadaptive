@@ -150,3 +150,6 @@ nesting/.qtenvrc
 nesting/.idea
 
 nesting/doc/build
+
+# 暂时把GCL自适应测试目录不要同步，主要同步.cc文件等的修改
+nesting/simulations/GCLadaptive
