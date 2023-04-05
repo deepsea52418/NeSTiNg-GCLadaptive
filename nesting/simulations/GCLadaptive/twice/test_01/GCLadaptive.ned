@@ -10,7 +10,7 @@ import nesting.node.ethernet.VlanEtherSwitchPreemptable;
 
 network GCLadaptive
 {
-    @display("bgb=1918.28,1080.66");
+    @display("bgb=4413.3926,2049.3325");
     types:
         channel C extends DatarateChannel
         {

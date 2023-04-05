@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 打开文件
-with open('../single/test_03/results/roboticArm.txt', 'r') as file1:
+with open('../single/test_08/results/roboticArm.txt', 'r') as file1:
     lines_1 = file1.readlines()
-with open('../single/test_03/results/gateController.txt', 'r') as file2:
+with open('../single/test_08/results/gateController.txt', 'r') as file2:
     lines_2 = file2.readlines()[2:]  # 跳过前两行数据
 
 
@@ -71,9 +71,8 @@ TT_max = max(TT_delay)
 BE_max = max(BE_delay)
 TT_min = min(TT_delay)
 BE_min = min(BE_delay)
-print("TT_avg: ", TT_avg, "us    TT_std: " , TT_std, "us    TT_max: ", TT_max, "us    TT_min: ", TT_min,"us")
-print("BE_avg: ", BE_avg, "us    BE_std: " , BE_std, "us    BE_max: ", BE_max, "us    BE_min: ", BE_min,"us")
-
+print("TT_avg: ", round(TT_avg,2), "us    TT_std: " , round(TT_std,2), "us    TT_max: ", round(TT_max,2), "us    TT_min: ", round(TT_min,2),"us")
+print("BE_avg: ", round(BE_avg,2), "us    BE_std: " , round(BE_std,2), "us    BE_max: ", round(BE_max,2), "us    BE_min: ", round(BE_min,2),"us")
 # 绘图设置
 # 画两张图
 fig, ax = plt.subplots(2, 1, figsize=(8, 6))
