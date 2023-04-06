@@ -40,7 +40,7 @@ namespace nesting {
             dei = &par("dei");
             vid = &par("vid");
             gateController = getModuleFromPar<GateController>(par("gateControllerModule"), this);
-            string filename = (&par("result_file_location"))->stringValue() ;
+            string filename = (&par("result_file_location"))->stringValue();
             this->result_file.open(filename, ios::out | ios::trunc);
             
             // 初始化GCL自适应控制参数
