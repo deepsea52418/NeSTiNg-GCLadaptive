@@ -127,7 +127,7 @@ namespace nesting {
             packetsSent++;
         }
     }
-
+    // 对其父类EtherTrafGen的receivePacket()函数进行重新，并修改其父类，使其可以动态链接
     void VlanEtherTrafGenGCL2::receivePacket(Packet *msg)
     {
         // 计算报文延迟
@@ -146,7 +146,8 @@ namespace nesting {
             << ", \"pcp\": " << msg->getTag<EnhancedVlanInd>()->getPcp() \
             << ", \"e2edelay\": " << delay << " } "   << endl;
         
-        
+        // 这边是选择调节的交换机，目前我们的调节规则是，先调节共用交换机，后调节独占交换机
+        // gateController_a为公共交换机，gateController_b为独占交换机
         static bool is_first_increase_switch = true;
         static bool is_first_decrease_switch = true;
 
@@ -184,7 +185,11 @@ namespace nesting {
         }
 
 
-        // 判断当前报文是否是TT流，若不是TT流，则不进行调节
+        // 这边为GCL自适应实际控制函数体，实现以下功能：
+        // 如果在接收端收到了TT流，计算延迟，如果延迟高于时延上界，则增大下一次执行的GCL的时隙，如果延迟低于时延下界，则减小下一次执行的GCL的时隙
+        // 每个流量可以造成时隙改变的步长为：increasesteplength/decreasesteplength
+        // 每个GCL周期，时隙最大变化步长为：maxIncreasesteplength/maxDecreasesteplength
+        // 在控制时隙改变时，如果有一个流量延迟高于时延上界，就不会造成时隙减小。只有所有流量都小于延迟下界时，才减小GCL时隙
         if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 ){
             // 获取gatecontroller中的newSchedule对象
             newSchedule = gateController ->getnewSchedule();
@@ -204,14 +209,14 @@ namespace nesting {
             bool isIncreased = gateController->getisIncreased();
             
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
-            if (delay >= upperLimitTime) {
+            if (delay > upperLimitTime) {
                 gateController->setisIncreased(true);
                 if (time_interval < current_interval){
                     // 这个判断是为了防止在一个GCL中，刚开始的几个流量延迟小，导致时隙减小
                     // 如果本轮GCL更新中有流量延迟高于时延上界，则将本轮更新中所有“减小”的更新都重置
                     target_time_interval = current_interval;
                 }
-                target_time_interval = time_interval.trunc(SIMTIME_US) + increasesteplength;
+                target_time_interval =  target_time_interval + increasesteplength;
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.9;
@@ -220,8 +225,9 @@ namespace nesting {
                     target_time_interval = current_interval + maxIncreasesteplength;
                 }
             }
+             // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>
             if (delay <= lowerLimitTime && isIncreased == false ) {
-                target_time_interval = time_interval.trunc(SIMTIME_US) - decreasesteplength;
+                target_time_interval = time_interval - decreasesteplength;
                 if( target_time_interval <= schedule_cycle * 0.1){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.1;
@@ -230,10 +236,9 @@ namespace nesting {
                     target_time_interval = current_interval - maxDecreasesteplength; 
                 }
             } 
-
             // 更新GCL
             newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
-            newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
+            newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle - target_time_interval.trunc(SIMTIME_US));
 
             // 每次写入当前时间间隔大小
             this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\
@@ -241,7 +246,6 @@ namespace nesting {
             << ", \"pcp\": " << msg->getTag<EnhancedVlanInd>()->getPcp() \
             << ", \"pcp=7-interval\": " << target_time_interval.trunc(SIMTIME_US) << ", \"pcp<7-interval\": " << schedule_cycle - target_time_interval.trunc(SIMTIME_US) << " } "<< endl;
         }
-
         // 原receivePacket()函数功能
         EV_INFO << "Received packet `" << msg->getName() << "' length= " << msg->getByteLength() << "B\n";
         packetsReceived++;

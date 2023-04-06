@@ -167,16 +167,16 @@ namespace nesting {
             simtime_t target_time_interval = time_interval;
             // 获取gatecontroller的isIncreased参数，判断当前的newSchedule的TT时隙有没有被增大，如果没有被增大，可以被变小,目的是宁可浪费带宽也要保障TT流传输
             bool isIncreased = gateController->getisIncreased();
-            
+
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
-            if (delay >= upperLimitTime) {
+            if (delay > upperLimitTime) {
                 gateController->setisIncreased(true);
                 if (time_interval < current_interval){
                     // 这个判断是为了防止在一个GCL中，刚开始的几个流量延迟小，导致时隙减小
                     // 如果本轮GCL更新中有流量延迟高于时延上界，则将本轮更新中所有“减小”的更新都重置
                     target_time_interval = current_interval;
                 }
-                target_time_interval = time_interval.trunc(SIMTIME_US) + increasesteplength;
+                target_time_interval =  target_time_interval + increasesteplength;
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.9;
@@ -185,8 +185,9 @@ namespace nesting {
                     target_time_interval = current_interval + maxIncreasesteplength;
                 }
             }
+            // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>
             if (delay <= lowerLimitTime && isIncreased == false ) {
-                target_time_interval = time_interval.trunc(SIMTIME_US) - decreasesteplength;
+                target_time_interval = time_interval - decreasesteplength;
                 if( target_time_interval <= schedule_cycle * 0.1){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.1;
@@ -197,7 +198,7 @@ namespace nesting {
             } 
             // 更新GCL
             newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
-            newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle-target_time_interval.trunc(SIMTIME_US));
+            newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle - target_time_interval.trunc(SIMTIME_US));
 
             // 每次写入当前时间间隔大小
             this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\
