@@ -43,5 +43,5 @@ simple VlanEtherTrafGen extends EtherTrafGen
         bool dei = default(false);				// DEI (Drop Eligible Indicator) that is added to the packets control information
         int vid = default(1);					// VID (VLAN Identifier) value that is added to the packets control information
         bool verbose = default(false);
-        string result_file_location = default("VlanEtherTrafGenGCL-result"); // 默认的结果文件
+        string result_file_location = default("results/VlanEtherTrafGen-result"); // 默认的结果文件
 }
