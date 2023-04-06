@@ -145,7 +145,11 @@ namespace nesting {
             << ", \"pcp\": " << msg->getTag<EnhancedVlanInd>()->getPcp() \
             << ", \"e2edelay\": " << delay << " } "   << endl;
         
-        // 判断当前报文是否是TT流，若不是TT流，则不进行调节
+        // 这边为GCL自适应实际控制函数体，实现以下功能：
+        // 如果在接收端收到了TT流，计算延迟，如果延迟高于时延上界，则增大下一次执行的GCL的时隙，如果延迟低于时延下界，则减小下一次执行的GCL的时隙
+        // 每个流量可以造成时隙改变的步长为：increasesteplength/decreasesteplength
+        // 每个GCL周期，时隙最大变化步长为：maxIncreasesteplength/maxDecreasesteplength
+        // 在控制时隙改变时，如果有一个流量延迟高于时延上界，就不会造成时隙减小。只有所有流量都小于延迟下界时，才减小GCL时隙
         if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 ){
             // 获取gatecontroller中的newSchedule对象
             newSchedule = gateController ->getnewSchedule();
@@ -167,6 +171,11 @@ namespace nesting {
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
             if (delay >= upperLimitTime) {
                 gateController->setisIncreased(true);
+                if (time_interval < current_interval){
+                    // 这个判断是为了防止在一个GCL中，刚开始的几个流量延迟小，导致时隙减小
+                    // 如果本轮GCL更新中有流量延迟高于时延上界，则将本轮更新中所有“减小”的更新都重置
+                    target_time_interval = current_interval;
+                }
                 target_time_interval = time_interval.trunc(SIMTIME_US) + increasesteplength;
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%

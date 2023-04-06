@@ -206,6 +206,11 @@ namespace nesting {
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
             if (delay >= upperLimitTime) {
                 gateController->setisIncreased(true);
+                if (time_interval < current_interval){
+                    // 这个判断是为了防止在一个GCL中，刚开始的几个流量延迟小，导致时隙减小
+                    // 如果本轮GCL更新中有流量延迟高于时延上界，则将本轮更新中所有“减小”的更新都重置
+                    target_time_interval = current_interval;
+                }
                 target_time_interval = time_interval.trunc(SIMTIME_US) + increasesteplength;
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%
