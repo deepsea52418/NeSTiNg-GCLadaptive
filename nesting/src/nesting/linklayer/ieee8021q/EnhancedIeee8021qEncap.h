@@ -17,6 +17,8 @@
 #define __NESTINGNG_ENHANCEDIEEE8021QENCAP_H_
 
 #include <omnetpp.h>
+#include <fstream>
+#include <iostream>
 
 #include "inet/linklayer/ieee8021q/Ieee8021qHeader_m.h"
 #include "inet/linklayer/ethernet/EtherFrame_m.h"
@@ -24,11 +26,17 @@
 
 using namespace omnetpp;
 using namespace inet;
+using namespace std;
 
 namespace nesting {
 
 class EnhancedIeee8021qEncap : public cSimpleModule
 {
+private:
+    // 增加结果统计文件信息
+    fstream result_file;
+    cPar* result_file_location;
+    cPar* hasTrafficRecorder;
 protected:
     const char *vlanTagType = nullptr;
     std::vector<int> inboundVlanIdFilter;

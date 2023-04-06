@@ -30,6 +30,10 @@ simple EnhancedIeee8021qEncap like IIeee8021qEncap
         string outboundVlanIdFilter = default("");
         string outboundVlanIdMap = default("");
         bool tagTcpTraffic = default(false); // When true tags TCP segments from upper layer with destination port mod 8
+        // 增加参数，指定EnhancedIeee8021qEncap统计报文延迟等信息
+        bool hasTrafficRecorder = default(false);
+        string result_file_location = default("EnhancedIeee8021qEncap-result"); // 默认的结果文件
+        
         @display("i=block/cogwheel");
         @signal[packetDropped](type=inet::Packet);
         @statistic[packetDropped](title="packet dropped"; source=packetDropped; record=count,sum(packetBytes),vector(packetBytes); interpolationmode=none);
