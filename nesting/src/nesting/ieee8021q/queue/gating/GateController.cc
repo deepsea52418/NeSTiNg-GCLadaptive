@@ -99,6 +99,8 @@ void GateController::initialize(int stage) {
         // 初始化isIncreased
         isIncreased = false;
 
+        // 初始化isSelect
+        isSelected = false;
         currentSchedule = new Schedule<GateBitvector>();
         currentSchedule->addControlListEntry(SimTime(1, SIMTIME_S), GateBitvector("11111111"));
         cXMLElement* xml = par("initialSchedule").xmlValue();
@@ -349,6 +351,8 @@ void GateController::updateSchedule()
         nextSchedule = newSchedule;
         // 重置isIncreased
         isIncreased = false;
+        // 重置isSelected 
+        isSelected = false;
         // 记录GCL更新情况
         this->result_file << "{ \"time\": "<<simTime() << ", \"cycletime\": \"" << currentSchedule->getCycleTime() << "\""\
             << ", \"TT-gcl\": \"" << currentSchedule->getScheduledObject(scheduleIndex)  << "\"" \
@@ -471,9 +475,21 @@ void GateController::setisIncreased(bool is_Increased){
 }
 
 // 自写函数
-// 获取当前GCL
+// 获取当前GCL对应时隙
 simtime_t GateController::getCurrentScheduleInterval(int scheduleIndex){
     return this->currentSchedule->getTimeInterval(scheduleIndex);
+}
+
+// 自写函数
+// 获取gateController的isIncreased
+bool GateController::getisSelected(){
+    return this->isSelected;
+}
+
+// 自写函数
+// 设置gateController的isIncreased
+void GateController::setisSelected(bool is_Selected){
+    this->isSelected = is_Selected;
 }
 
 }

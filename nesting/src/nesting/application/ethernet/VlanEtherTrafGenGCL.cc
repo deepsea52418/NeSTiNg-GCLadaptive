@@ -155,10 +155,15 @@ namespace nesting {
             newSchedule = gateController ->getnewSchedule();
             // 获取循环时间
             simtime_t schedule_cycle = newSchedule->getCycleTime();
-            // 获取当前Index
-            unsigned int currentscheduleIndex = gateController->getscheduleIndex();
-            // 获取下一个Index
-            unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
+
+            // 在这边挂起一个bug，就是用之前读取gateController->getscheduleIndex()获取可以获取当前的时隙情况。但是如果收到了一个TT报文，但当前时间交换机已经
+            // 转到BE时隙，就会获取到BE时隙的index，造成bug。这个问题暂时先不处理，直接用index = 0/1解决
+            // // 获取当前Index
+            // unsigned int currentscheduleIndex = gateController->getscheduleIndex();
+            int currentscheduleIndex = 0;
+            // // 获取下一个Index
+            // unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
+            int nextscheduleIndex = 1;
             // 获取下次执行的GCL时隙大小
             simtime_t time_interval = newSchedule->getTimeInterval(currentscheduleIndex);
             // 获取正在执行的GCL时隙大小
@@ -167,7 +172,11 @@ namespace nesting {
             simtime_t target_time_interval = time_interval;
             // 获取gatecontroller的isIncreased参数，判断当前的newSchedule的TT时隙有没有被增大，如果没有被增大，可以被变小,目的是宁可浪费带宽也要保障TT流传输
             bool isIncreased = gateController->getisIncreased();
-
+            // 输出日志
+            EV_INFO << "currentscheduleIndex = " << currentscheduleIndex << endl;
+            EV_INFO << "nextscheduleIndex = " << nextscheduleIndex << endl;
+            EV_INFO << "next TT interval = " << time_interval*1000000 << "us" << endl;
+            EV_INFO << "current TT interval = " << current_interval*1000000 << "us" << endl;
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
             if (delay > upperLimitTime) {
                 gateController->setisIncreased(true);
@@ -180,10 +189,15 @@ namespace nesting {
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.9;
+                    EV_INFO << "TT Interval > 0.9*cycle  change TT interval = 0.9*cycle  "<<endl;
+                    EV_INFO << "current TT interval= "<< current_interval*1000000 << "us"<< endl;
+                    EV_INFO << "next TT interval= "<< target_time_interval*1000000 << "us"<< endl;
+                    EV_INFO << endl;
                 }else if((target_time_interval - current_interval >= maxIncreasesteplength) || \
                          (current_interval - target_time_interval >= maxIncreasesteplength)) {
                     target_time_interval = current_interval + maxIncreasesteplength;
                 }
+                EV_INFO << "Increase Interval !!!" << endl;
             }
             // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>
             if (delay <= lowerLimitTime && isIncreased == false ) {
@@ -195,10 +209,13 @@ namespace nesting {
                          (current_interval - target_time_interval >= maxDecreasesteplength)) {
                     target_time_interval = current_interval - maxDecreasesteplength; 
                 }
+                EV_INFO << "Decrease Interval !!!!" << endl;
             } 
             // 更新GCL
             newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
             newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle - target_time_interval.trunc(SIMTIME_US));
+
+            EV_INFO << "after change next TT interval =   "<< target_time_interval.trunc(SIMTIME_US)*1000000 << "us"<<endl;
 
             // 每次写入当前时间间隔大小
             this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\

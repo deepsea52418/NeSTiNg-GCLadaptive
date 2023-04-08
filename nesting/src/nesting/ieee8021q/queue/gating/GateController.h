@@ -92,6 +92,9 @@ private:
 
     // 为了保障TT流的传输，在一个周期里，如果时隙被调整变大，就不能被调整变小，只有当所有TT流都要求时隙减小时才减小
     bool isIncreased;
+
+    // 在两交换机GCL自适应中，利用isSelected标识gateController的选择情况
+    bool isSelected;
 protected:
     /** @see cSimpleModule::initialize(int) */
     virtual void initialize(int stage) override;
@@ -150,6 +153,12 @@ public:
 
     // 获取currentSchedule的时隙
     virtual simtime_t getCurrentScheduleInterval(int scheduleIndex);
+
+    // 获取gateController的isIncreased
+    virtual bool getisSelected();
+
+    // 设置gateController的isIncreased
+    virtual void setisSelected(bool is_Selected);
 };
 
 } // namespace nesting

@@ -146,42 +146,66 @@ namespace nesting {
             << ", \"pcp\": " << msg->getTag<EnhancedVlanInd>()->getPcp() \
             << ", \"e2edelay\": " << delay << " } "   << endl;
         
-        // 这边是选择调节的交换机，目前我们的调节规则是，先调节共用交换机，后调节独占交换机
-        // gateController_a为公共交换机，gateController_b为独占交换机
-        static bool is_first_increase_switch = true;
-        static bool is_first_decrease_switch = true;
+        // 这边是选择调节的交换机，目前我们的调节规则是：
+        // 1. 对于流量延迟大，则先调节共用交换机，后调节独占交换机
+        // 2. 对于流量延迟小，则先调节共用交换机，后调节独占交换机
+        // 3. 在一个GCL执行周期中，只更改一个交换机，避免同时更改两个交换机造成bug
+        // 4. 只要有一个流量延迟超过时延上限，就扩大时隙
+        // 5. 只有当所有流量延迟都低于时延上限，才减小时隙
+        // 6. gateController_a为公共交换机，gateController_b为独占交换机
+        // 
 
-
-        // 选择调节的交换机(大延迟)
-        if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 && delay >= SimTime(75, SIMTIME_US)){
-            // 重置减小的交换机判断
-            static bool is_first_decrease_switch = true;
-            // 判断是否调节过共用的交换机
-            if ( is_first_increase_switch == true ){
-                // 没有调节过,则调节公共交换机
-                gateController = gateController_a;
-                is_first_increase_switch = false;
-            }else{
-                // 如果已经调节过，则调节非公共交换机
-                gateController = gateController_b;
-                is_first_increase_switch = true;
-            }
-        }
-
-        // 选择调节的交换机(小延迟)
-        if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 && delay <= SimTime(45, SIMTIME_US)){
-            // 重置增大的交换机判断
+        // 如果一个交换机在一个GCL周期被选择，那么这个周期就调整这个交换机
+        bool switchA_isSeleted = gateController_a->getisSelected();
+        bool switchB_isSeleted = gateController_b->getisSelected();
+        if (switchA_isSeleted == true && switchB_isSeleted == false ){
+            gateController = gateController_a;
+        }else if (switchA_isSeleted == false && switchB_isSeleted == true ){
+            gateController = gateController_b;
+        }else if (switchA_isSeleted == true && switchB_isSeleted == true ){
+            throw cRuntimeError("switch select failed");
+        }else {
             static bool is_first_increase_switch = true;
-            // 判断是否调节过共用的交换机
-            if ( is_first_decrease_switch == true ){
-                // 没有调节过,则调节公共交换机
-                gateController = gateController_a;
-                is_first_decrease_switch = false;
-            }else{
-                // 如果已经调节过，则调节非公共交换机
-                gateController = gateController_b;
+            static bool is_first_decrease_switch = true;
+            // 选择调节的交换机(大延迟)
+            if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 && delay > upperLimitTime){
+                // 重置减小的交换机判断
                 is_first_decrease_switch = true;
+                // 判断是否调节过共用的交换机
+                if ( is_first_increase_switch == true ){
+                    // 没有调节过,则调节公共交换机
+                    gateController = gateController_a;
+                    is_first_increase_switch = false;
+                }else{
+                    // 如果已经调节过，则调节非公共交换机
+                    gateController = gateController_b;
+                    is_first_increase_switch = true;
+                }
             }
+            // 选择调节的交换机(小延迟)
+            if ( msg->getTag<EnhancedVlanInd>()->getPcp() == 7 && delay <= lowerLimitTime){
+                // 重置增大的交换机判断
+                is_first_increase_switch = true;
+                // 判断是否调节过共用的交换机
+                if ( is_first_decrease_switch == true ){
+                    // 没有调节过,则调节公共交换机
+                    gateController = gateController_a;
+                    is_first_decrease_switch = false;
+                }else{
+                    // 如果已经调节过，则调节非公共交换机
+                    gateController = gateController_b;
+                    is_first_decrease_switch = true;
+                }
+            }
+            gateController->setisSelected(true);
+        }
+        
+        // 输出交换机选择结果
+        EV_INFO << "delay =  "<< delay*1000000 <<" us" <<endl;
+        if (gateController == gateController_a){
+            EV_INFO << "select SwitchA" << endl;
+        }else if (gateController == gateController_b){
+            EV_INFO << "select SwitchB" << endl;
         }
 
 
@@ -195,10 +219,15 @@ namespace nesting {
             newSchedule = gateController ->getnewSchedule();
             // 获取循环时间
             simtime_t schedule_cycle = newSchedule->getCycleTime();
-            // 获取当前Index
-            unsigned int currentscheduleIndex = gateController->getscheduleIndex();
-            // 获取下一个Index
-            unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
+            
+            // 在这边挂起一个bug，就是用之前读取gateController->getscheduleIndex()获取可以获取当前的时隙情况。但是如果收到了一个TT报文，但当前时间交换机已经
+            // 转到BE时隙，就会获取到BE时隙的index，造成bug。这个问题暂时先不处理，直接用index = 0/1解决
+            // // 获取当前Index
+            // unsigned int currentscheduleIndex = gateController->getscheduleIndex();
+            int currentscheduleIndex = 0;
+            // // 获取下一个Index
+            // unsigned int nextscheduleIndex = (currentscheduleIndex + 1) % newSchedule->getControlListLength();
+            int nextscheduleIndex = 1;
             // 获取下次执行的GCL时隙大小
             simtime_t time_interval = newSchedule->getTimeInterval(currentscheduleIndex);
             // 获取正在执行的GCL时隙大小
@@ -207,7 +236,11 @@ namespace nesting {
             simtime_t target_time_interval = time_interval;
             // 获取gatecontroller的isIncreased参数，判断当前的newSchedule的TT时隙有没有被增大，如果没有被增大，可以被变小,目的是宁可浪费带宽也要保障TT流传输
             bool isIncreased = gateController->getisIncreased();
-            
+            // 输出日志
+            EV_INFO << "currentscheduleIndex = " << currentscheduleIndex << endl;
+            EV_INFO << "nextscheduleIndex = " << nextscheduleIndex << endl;
+            EV_INFO << "next TT interval = " << time_interval*1000000 << "us" << endl;
+            EV_INFO << "current TT interval = " << current_interval*1000000 << "us" << endl;
             // 根据报文延迟重新计算时隙大小 trunc()函数将截取浮点数的整数部
             if (delay > upperLimitTime) {
                 gateController->setisIncreased(true);
@@ -220,10 +253,15 @@ namespace nesting {
                 if( target_time_interval >= schedule_cycle * 0.9){
                     // 两端预留10%
                     target_time_interval = schedule_cycle * 0.9;
+                    EV_INFO << "TT Interval > 0.9*cycle  change TT interval = 0.9*cycle  "<<endl;
+                    EV_INFO << "current TT interval= "<< current_interval*1000000 << "us"<< endl;
+                    EV_INFO << "next TT interval= "<< target_time_interval*1000000 << "us"<< endl;
+                    EV_INFO << endl;
                 }else if((target_time_interval - current_interval >= maxIncreasesteplength) || \
                          (current_interval - target_time_interval >= maxIncreasesteplength)) {
                     target_time_interval = current_interval + maxIncreasesteplength;
                 }
+                EV_INFO << "Increase Interval !!!" << endl;
             }
              // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>
             if (delay <= lowerLimitTime && isIncreased == false ) {
@@ -235,10 +273,13 @@ namespace nesting {
                          (current_interval - target_time_interval >= maxDecreasesteplength)) {
                     target_time_interval = current_interval - maxDecreasesteplength; 
                 }
+                EV_INFO << "Decrease Interval !!!!" << endl;
             } 
             // 更新GCL
             newSchedule->setTimeInterval(currentscheduleIndex , target_time_interval.trunc(SIMTIME_US));
             newSchedule->setTimeInterval(nextscheduleIndex , schedule_cycle - target_time_interval.trunc(SIMTIME_US));
+
+            EV_INFO << "after change next TT interval =   "<< target_time_interval.trunc(SIMTIME_US)*1000000 << "us"<<endl;
 
             // 每次写入当前时间间隔大小
             this->result_file << "{ \"time\": "<<simTime() << ", \"src\": \"" << msg->getTag<MacAddressInd>()->getSrcAddress() << "\""\
