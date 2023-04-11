@@ -1,77 +1,185 @@
 <?xml version="1.0" ?>
 <schedules>
 	<defaultcycle>400us</defaultcycle>
-	<host name="robotController1">
+	<host name="TTsender1">
 		<cycle>400us</cycle>
 		<entry>
 			<start>0us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:06</dest>
-			<size>400B</size>
+			<size>800B</size>
 			<flowId>1</flowId>
 		</entry>
 		<entry>
-			<start>5us</start>
-			<queue>7</queue>
-			<dest>00:00:00:00:00:06</dest>
-			<size>600B</size>
-			<flowId>2</flowId>
-		</entry>
-		<entry>
-			<start>10us</start>
+			<start>8us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:06</dest>
 			<size>800B</size>
-			<flowId>3</flowId>
-		</entry>
-		<entry>
-			<start>17us</start>
-			<queue>7</queue>
-			<dest>00:00:00:00:00:06</dest>
-			<size>900B</size>
-			<flowId>4</flowId>
-		</entry>
-		<entry>
-			<start>25us</start>
-			<queue>7</queue>
-			<dest>00:00:00:00:00:06</dest>
-			<size>400B</size>
-			<flowId>5</flowId>
+			<flowId>2</flowId>
 		</entry>
 	</host>
-	<host name="robotController2">
+	<host name="TTsender2">
 		<cycle>400us</cycle>
 		<entry>
-			<start>45us</start>
-			<queue>7</queue>
-			<dest>00:00:00:00:00:06</dest>
-			<size>400B</size>
-			<flowId>1</flowId>
-		</entry>
-		<entry>
-			<start>50us</start>
-			<queue>7</queue>
-			<dest>00:00:00:00:00:06</dest>
-			<size>600B</size>
-			<flowId>2</flowId>
-		</entry>
-		<entry>
-			<start>55us</start>
+			<start>0us</start>
 			<queue>7</queue>
 			<dest>00:00:00:00:00:06</dest>
 			<size>800B</size>
-			<flowId>3</flowId>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender3">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender4">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender5">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender6">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender7">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender8">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender9">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
+		</entry>
+	</host>
+	<host name="TTsender10">
+		<cycle>400us</cycle>
+		<entry>
+			<start>0us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>1</flowId>
+		</entry>
+		<entry>
+			<start>8us</start>
+			<queue>7</queue>
+			<dest>00:00:00:00:00:06</dest>
+			<size>800B</size>
+			<flowId>2</flowId>
 		</entry>
 	</host>
 	<switch name="switchA">
 		<port id="4">
 			<schedule cycleTime="400us">
 				<entry>
-					<length>40us</length>
+					<length>100us</length>
 					<bitvector>10000000</bitvector>
 				</entry>
 				<entry>
-					<length>360us</length>
+					<length>300us</length>
 					<bitvector>01111111</bitvector>
 				</entry>
 			</schedule>
@@ -81,11 +189,11 @@
 		<port id="0">
 			<schedule cycleTime="400us">
 				<entry>
-					<length>80us</length>
+					<length>100us</length>
 					<bitvector>10000000</bitvector>
 				</entry>
 				<entry>
-					<length>320us</length>
+					<length>300us</length>
 					<bitvector>01111111</bitvector>
 				</entry>
 			</schedule>

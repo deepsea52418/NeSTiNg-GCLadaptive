@@ -175,11 +175,11 @@
 		<port id="3">
 			<schedule cycleTime="400us">
 				<entry>
-					<length>100us</length>
+					<length>200us</length>
 					<bitvector>10000000</bitvector>
 				</entry>
 				<entry>
-					<length>300us</length>
+					<length>200us</length>
 					<bitvector>01111111</bitvector>
 				</entry>
 			</schedule>
