@@ -69,6 +69,12 @@ namespace nesting {
             EV_INFO << "upperLimitTime = " << upperLimitTime <<"us"<<endl;
             EV_INFO << "lowerLimitTime = " << lowerLimitTime <<"us"<<endl;
             //
+            // 初始化autoTimeslotReduction设置
+            autoIntervalDecrease = &par("autoIntervalDecrease");
+            transmissionSelection = getModuleFromPar<TransmissionSelection>(par("TransmissionSelectionModule"), this);
+            if (autoIntervalDecrease->boolValue() == true){
+            EV_INFO << "enable autoIntervalDecrease, Delete interval decrease parameters" << endl;
+            }
         } else if (stage == INITSTAGE_LINK_LAYER) {
             registerService(*VlanEtherTrafGenSched::L2_PROTOCOL, nullptr, gate("in"));
             registerProtocol(*VlanEtherTrafGenSched::L2_PROTOCOL, gate("out"), nullptr);
@@ -198,9 +204,20 @@ namespace nesting {
                     target_time_interval = current_interval + maxIncreasesteplength;
                 }
                 EV_INFO << "Increase Interval !!!" << endl;
-            }
-            // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>
-            if (delay <= lowerLimitTime && isIncreased == false ) {
+            } else if ( autoIntervalDecrease->boolValue() == true && isIncreased == false) {
+            // 如果启用autoIntervalDecrease功能,则统计TransmissionSelection模块收到的TT时隙最后一帧传输时间，根据此时间减小时隙
+            // 目前的逻辑是收到一个TT报文，只要延迟不大，就根据当前最后一次传输时间更新时隙。这边存在一个可能的bug，就是TT流到来时，已经加载了下一个GCL
+            // 目前考虑的情况就只适合于先TT后BE的GCL，而且GCL中只有两个条目
+            // 预留了10%，在更新GCL时会自动取整，所以不用在这边取整
+                target_time_interval = (transmissionSelection->getMaxLastTTtransmissiontime()- gateController->getCycleStartTime())*1.1;
+                
+                EV_INFO << "enable autoIntervalDecrease"<<endl;
+                EV_INFO << "MaxLastTTtransmissiontime =  " << transmissionSelection->getMaxLastTTtransmissiontime() << endl;
+                EV_INFO << "CycleStartTime =  "<< gateController->getCycleStartTime() << endl;
+                EV_INFO << "target_time_interval = " << target_time_interval << endl;
+
+            } else if (delay <= lowerLimitTime && isIncreased == false ) {
+                // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>
                 target_time_interval = time_interval - decreasesteplength;
                 if( target_time_interval <= schedule_cycle * 0.1){
                     // 两端预留10%

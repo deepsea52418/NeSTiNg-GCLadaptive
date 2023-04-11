@@ -36,7 +36,9 @@ simple VlanEtherTrafGenGCL2 extends EtherTrafGen
         string gateControllerModule_a = default(""); // 交换机a的路径
         string gateControllerModule_b = default(""); // 交换机b的路径
         string result_file_location = default("VlanEtherTrafGenGCL2-result"); // 默认的结果文件
-
+        bool autoIntervalDecrease = default(false); // 自动时隙减小功能，根据TT流在一个时隙中传输的最后一帧的时间，减小时隙大小
+        string TransmissionSelectionModule_a = default(""); // Path to the TransmissionSelection module
+        string TransmissionSelectionModule_b = default(""); // Path to the TransmissionSelection module
         double increasesteplength @unit(s) = default(-1s);   // 设置单流量调节步长 单位us
         double decreasesteplength @unit(s) = default(-1s);   // 设置单流量调节步长 单位us
         double maxIncreasesteplength @unit(s) = default(-1s);    // 设置单次GCL更新最大增大步长 单位us

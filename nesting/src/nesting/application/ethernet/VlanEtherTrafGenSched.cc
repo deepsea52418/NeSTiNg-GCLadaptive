@@ -236,8 +236,6 @@ void VlanEtherTrafGenSched::tick(IClock *clock, short kind) {
         }
         indexSchedule = 0;
         clock->subscribeTick(this, scheduleNextTickEvent() / clock->getClockRate());
-
-        EV_INFO << "hello sly1"<<endl;
     }
     else {
         double delay = *jitter;

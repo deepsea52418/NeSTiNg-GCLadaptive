@@ -73,7 +73,7 @@ protected:
      * a packetEnqueued-method call are handled.
      */
     int selfMessageSchedulingPriority = 1;
-
+    simtime_t MaxLastTTtransmissiontime;
     /**
      * This message is used as a self-message to trigger a request-packet-
      * event after a packet is requested from this module.
@@ -178,6 +178,8 @@ public:
     virtual bool hasExpressPacketEnqueued();
 
     virtual void removePendingRequests();
+    // 自写函数，表示获取最后一帧TT传输时间
+    virtual simtime_t getMaxLastTTtransmissiontime();
 };
 
 } // namespace nesting

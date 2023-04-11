@@ -492,5 +492,11 @@ void GateController::setisSelected(bool is_Selected){
     this->isSelected = is_Selected;
 }
 
+// 自写函数
+// 获取cyclestart时间
+simtime_t GateController::getCycleStartTime(){
+    return this->cycleStart;
+}
+
 }
 // namespace nesting

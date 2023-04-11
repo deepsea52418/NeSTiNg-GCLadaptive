@@ -159,6 +159,9 @@ public:
 
     // 设置gateController的isIncreased
     virtual void setisSelected(bool is_Selected);
+
+    // 获取cycleStart时间
+    virtual simtime_t getCycleStartTime();
 };
 
 } // namespace nesting

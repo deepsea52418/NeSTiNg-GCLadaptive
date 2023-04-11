@@ -37,6 +37,7 @@ TransmissionSelection::~TransmissionSelection() {
 void TransmissionSelection::initialize() {
     // Get transmission gate vector module
     TransmissionGate* tgModule = getModuleFromPar<TransmissionGate>(par("transmissionGateVectorModule"), this);
+    MaxLastTTtransmissiontime = SIMTIME_ZERO;
     // Iterate through all sibling modules
     auto it = cModule::SubmoduleIterator(tgModule->getParentModule());
     for (; !it.end(); it++) {
@@ -81,6 +82,11 @@ void TransmissionSelection::handleMessage(cMessage* msg) {
             packet->addTagIfAbsent<ExpressFrameReq>();
         }
         
+        // 记录收到TT帧的时间
+        if (gateId == 7){
+           MaxLastTTtransmissiontime = simTime();
+        }
+
         send(packet, "out");
     }
 }
@@ -214,6 +220,11 @@ bool TransmissionSelection::hasExpressPacketEnqueued() {
         }
     }
     return false;
+}
+
+// 自写函数，获取最后一帧TT传输时间
+simtime_t TransmissionSelection::getMaxLastTTtransmissiontime(){
+    return this->MaxLastTTtransmissiontime;
 }
 
 } // namespace nesting

@@ -20,6 +20,7 @@
 
 #include "inet/applications/ethernet/EtherTrafGen.h"
 #include "nesting/ieee8021q/queue/gating/GateController.h"
+#include "nesting/ieee8021q/queue/TransmissionSelection.h"
 
 #include <fstream>
 #include <iostream>
@@ -43,8 +44,9 @@ private:
     cPar* dei;
     cPar* vid;
     cPar* result_file_location;
+    cPar* autoIntervalDecrease;
 
-    // GCL自适应参数
+    // GCL自适应参数,当启用autoIntervalDecrease后，所有减小的参数无效
     simtime_t increasesteplength;
     simtime_t decreasesteplength;
     simtime_t maxIncreasesteplength;
@@ -64,6 +66,10 @@ private:
     GateController* gateController_a;
     GateController* gateController_b;
 
+    // TransmissionSelection组件
+    TransmissionSelection* transmissionSelection;
+    TransmissionSelection* transmissionSelection_a;
+    TransmissionSelection* transmissionSelection_b;
 protected:
     virtual void initialize(int stage) override;
     virtual void sendBurstPackets() override;
