@@ -74,7 +74,7 @@ private:
      * Specifies the cycle start time.
      */
     simtime_t cycleStart;
-
+    simtime_t cycleStart_for_autoIntervalDecrease;
     /** Reference to transmission gate vector module */
     std::vector<TransmissionGate*> transmissionGates;
 

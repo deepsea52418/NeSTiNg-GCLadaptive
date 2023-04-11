@@ -283,7 +283,7 @@ namespace nesting {
                 EV_INFO << "enable autoIntervalDecrease"<<endl;
                 EV_INFO << "MaxLastTTtransmissiontime =  " << transmissionSelection->getMaxLastTTtransmissiontime() << endl;
                 EV_INFO << "CycleStartTime =  "<< gateController->getCycleStartTime() << endl;
-                EV_INFO << "target_time_interval = " << target_time_interval << endl;
+                EV_INFO << "target_time_interval = " << (transmissionSelection->getMaxLastTTtransmissiontime()- gateController->getCycleStartTime())*1.1 << endl;
 
             } else if (delay <= lowerLimitTime && isIncreased == false ) {
                 // 为了防止upperLimitTime = lowerLimitTime造成两次调节的bug，lowerLimitTime是<= upperLimitTime是>

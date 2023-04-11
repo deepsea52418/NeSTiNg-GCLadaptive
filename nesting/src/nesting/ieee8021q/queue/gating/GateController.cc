@@ -101,6 +101,10 @@ void GateController::initialize(int stage) {
 
         // 初始化isSelect
         isSelected = false;
+
+        // 初始化cycleStart_for_autoIntervalDecrease
+        cycleStart_for_autoIntervalDecrease = SIMTIME_ZERO;
+        
         currentSchedule = new Schedule<GateBitvector>();
         currentSchedule->addControlListEntry(SimTime(1, SIMTIME_S), GateBitvector("11111111"));
         cXMLElement* xml = par("initialSchedule").xmlValue();
@@ -378,6 +382,7 @@ void GateController::updateSchedule()
     // 如果重新执行GCL，则GCL循环开始时间=当前时间
     if(scheduleIndex == 0) {
         cycleStart = clock->getTime();
+        cycleStart_for_autoIntervalDecrease = cycleStart;
     }
 
     // Get next gatestate bitvector
@@ -495,7 +500,7 @@ void GateController::setisSelected(bool is_Selected){
 // 自写函数
 // 获取cyclestart时间
 simtime_t GateController::getCycleStartTime(){
-    return this->cycleStart;
+    return this->cycleStart_for_autoIntervalDecrease;
 }
 
 }
