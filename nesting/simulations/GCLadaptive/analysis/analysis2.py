@@ -3,11 +3,11 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 打开文件
-with open('../twice/test_02/results/roboticArm.txt', 'r') as file1:
+with open('../twice/test_07/results/roboticArm.txt', 'r') as file1:
     lines_1 = file1.readlines()
-with open('../twice/test_02/results/gateController_a.txt', 'r') as file2:
+with open('../twice/test_07/results/gateController_a.txt', 'r') as file2:
     lines_2 = file2.readlines()[1:]  # 跳过前两行数据
-with open('../twice/test_02/results/gateController_b.txt', 'r') as file3:
+with open('../twice/test_07/results/gateController_b.txt', 'r') as file3:
     lines_3 = file3.readlines()[1:]  # 跳过前两行数据
 
 # 读取数据
