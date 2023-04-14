@@ -31,7 +31,13 @@ Schedule<GateBitvector>* ScheduleFactory::createGateBitvectorSchedule(cXMLElemen
     if (cycleTime != nullptr) {
         schedule->setCycleTime(SimTime::parse(cycleTime));
     }
-
+    // 增加basetime功能
+    const char* baseTime = xml->getAttribute("baseTime");
+    if (baseTime != nullptr) {
+        schedule->setBaseTime(SimTime::parse(baseTime));
+    }else {
+        schedule->setBaseTime(SimTime::ZERO);
+    }
     std::vector<cXMLElement*> entries = xml->getChildrenByTagName("entry");
     for (cXMLElement* entry : entries) {
         // Get length

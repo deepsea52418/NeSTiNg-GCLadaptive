@@ -127,7 +127,9 @@ void GateController::initialize(int stage) {
                 }
             }
         }
-        clock->subscribeTick(this, 0);
+        // 修改以支持basetime
+        // clock->subscribeTick(this, 0);
+        clock->subscribeTick(this, nextSchedule->getBaseTime()/ clock->getClockRate());
     }
 }
 
