@@ -3,9 +3,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 # 打开文件
-with open('../single/test_12/results/roboticArm.txt', 'r') as file1:
+with open('../single/test_16/results/roboticArm.txt', 'r') as file1:
     lines_1 = file1.readlines()
-with open('../single/test_12/results/gateController.txt', 'r') as file2:
+with open('../single/test_16/results/gateController.txt', 'r') as file2:
     lines_2 = file2.readlines()[2:]  # 跳过前两行数据
 
 
